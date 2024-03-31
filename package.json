@@ -1,0 +1,22 @@
+{
+  "name": "twinkl_coworking",
+  "version": "1.0.0",
+  "description": "Application web pour Twinkl_Coworking",
+  "main": "backend/server.mjs",
+  "scripts": {
+    "start": "node .",
+    "server": "nodemon ."
+  },
+  "author": "chiheb chabou",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.1",
+    "joi": "^17.12.2",
+    "mongoose": "^8.2.3"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.5",
+    "nodemon": "^3.1.0"
+  }
+}
