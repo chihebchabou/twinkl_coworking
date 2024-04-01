@@ -1,4 +1,4 @@
-import User, { validate } from "../models/User.mjs";
+import User, { authenticate, validate } from "../models/User.mjs";
 import ResponseError from "../utils/ResponseError.mjs";
 import { hash } from "../utils/helpers.mjs";
 
@@ -40,7 +40,29 @@ UserController.signup = async (req, res) => {
     })
 };
 
-UserController.signin = async (req, res) => { };
+UserController.signin = async (req, res) => {
+    // Get data from request body
+    const { email, password } = req.body;
+
+    // Get the user
+    const user = await authenticate(email, password);
+
+    // Login user (generate access token)
+    user.login(res);
+
+    // Return successful response
+    res.json({
+        message: "User signed in successfully",
+        user: {
+            _id: user._id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            phone: user.phone,
+            email: user.email,
+            address: user.address,
+        }
+    });
+};
 
 UserController.signout = async (req, res) => { };
 

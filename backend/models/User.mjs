@@ -1,5 +1,6 @@
 // Depenencies
 import { Schema, model } from "mongoose";
+import jwt from 'jsonwebtoken';
 import Joi from "joi";
 import { socialNetworkSchema } from "./SocialNetwork.mjs";
 import { hash } from "../utils/helpers.mjs";
@@ -14,6 +15,19 @@ const userSchema = new Schema({
     socialNetwork: { type: [socialNetworkSchema], trim: true, default: [] },
     password: { type: String, required: true, min: 8, trim: true }
 });
+
+userSchema.methods.login = function (res) {
+    const token = jwt.sign({ userId: this._id }, process.env.JWT_SECRET, {
+        expiresIn: '30d',
+    });
+
+    res.cookie('jwt', token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV !== 'development', // Use secure cookies in production
+        sameSite: 'strict', // Prevent CSRF attacks
+        maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+    });
+};
 
 export const validate = (data) => {
     const schema = Joi.object({
@@ -36,7 +50,7 @@ export const authenticate = async (email, password) => {
         return user;
     else
         throw new ResponseError(400, "Invalid credentials");
-}
+};
 
 const User = model('User', userSchema);
 

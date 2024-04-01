@@ -3,6 +3,7 @@ import { Schema, model } from "mongoose";
 import Joi from "joi";
 
 export const socialNetworkSchema = new Schema({
+    user: { type: Schema.Types.ObjectId, ref: 'User' },
     socialNetwork: { type: String, required: true, trim: true },
     socialNetworkURI: { type: String, required: true, trim: true },
 });
