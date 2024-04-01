@@ -1,5 +1,8 @@
 // Dependencies
 
+import Course, { validate } from "../models/Course.mjs";
+import ResponseError from "../utils/ResponseError.mjs";
+
 // Container for Course Controller
 const CourseController = {};
 
@@ -10,7 +13,31 @@ CourseController.index = async (req, res) => {
 
 // @route POST /api/courses
 CourseController.store = async (req, res) => {
-    res.json({ message: 'Course added successfully' })
+    // Get data from request body
+    const { courseName, description, duration, category } = req.body;
+
+    // Validate request data
+    const { error, value } = validate({ courseName, description, duration, category });
+
+    // Check for errors
+    if (error) {
+        console.log(error)
+        throw new ResponseError(400, error.message);
+    }
+
+    // Check if course exists
+    const courseExists = await Course.findOne({ courseName });
+    if (courseExists)
+        throw new ResponseError(400, "Déjà inscrit");
+
+    // Add course to the database
+    const course = await Course.create(value);
+
+    // Return successful response
+    res.status(201).json({
+        message: 'Course added successfully',
+        course
+    });
 };
 
 // @route GET /api/courses/:id

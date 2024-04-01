@@ -1,6 +1,9 @@
 // Depenencies
 import { Schema, model } from "mongoose";
 import Joi from "joi";
+import { socialNetworkSchema } from "./SocialNetwork.mjs";
+import { hash } from "../utils/helpers.mjs";
+import ResponseError from "../utils/ResponseError.mjs";
 
 const userSchema = new Schema({
     firstName: { type: String, required: true, trim: true },
@@ -8,7 +11,8 @@ const userSchema = new Schema({
     phone: { type: String, required: true, trim: true },
     email: { type: String, required: true, trim: true },
     address: { type: String, required: true, trim: true },
-    socialMedia: { type: [String], required: true, trim: true },
+    socialNetwork: { type: [socialNetworkSchema], trim: true, default: [] },
+    password: { type: String, required: true, min: 8, trim: true }
 });
 
 export const validate = (data) => {
@@ -18,9 +22,20 @@ export const validate = (data) => {
         phone: Joi.string().pattern(/^(\+\d{1,2}\s)?\(?\d{2}\)?[\s.-]\d{3}[\s.-]\d{3}$/).required(),
         email: Joi.string().email().required(),
         address: Joi.string().required(),
-        socialMedia: Joi.array().items(Joi.string().uri()),
+        password: Joi.string().min(8).required(),
     });
     return schema.validate(data, { abortEarly: false })
+}
+
+export const authenticate = async (email, password) => {
+    // Lookup the user
+    const user = await User.findOne({ email })
+
+    // If user email and password are valid return the user, otherwise responde with error message
+    if (user && user.password === hash(password))
+        return user;
+    else
+        throw new ResponseError(400, "Invalid credentials");
 }
 
 const User = model('User', userSchema);

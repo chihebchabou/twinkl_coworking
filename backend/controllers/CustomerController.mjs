@@ -1,5 +1,6 @@
 // Dependencies
-import Customer from "../models/Customer.mjs";
+import Customer, { validate } from "../models/Customer.mjs";
+import ResponseError from "../utils/ResponseError.mjs";
 
 // Container for Course Controller
 const CustomerController = {}
@@ -29,7 +30,7 @@ CustomerController.register = async (req, res) => {
     res.status(201).json({
         message: 'Customer Registered successfully',
         customer
-    })
+    });
 }
 
 // Export the module
