@@ -7,7 +7,7 @@ const socialNetworkRouter = Router();
 
 socialNetworkRouter.route('/').get(asyncMiddleware(SocialNetworkController.index)).post(asyncMiddleware(auth), asyncMiddleware(SocialNetworkController.store));
 
-socialNetworkRouter.route('/:id').get(asyncMiddleware(SocialNetworkController.show)).put(asyncMiddleware(SocialNetworkController.update)).delete(asyncMiddleware(SocialNetworkController.destroy));
+socialNetworkRouter.route('/:id').get(asyncMiddleware(SocialNetworkController.show)).put(asyncMiddleware(auth), asyncMiddleware(SocialNetworkController.update)).delete(asyncMiddleware(auth), asyncMiddleware(SocialNetworkController.destroy));
 
 
 export default socialNetworkRouter;
