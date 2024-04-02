@@ -5,8 +5,10 @@ import dotenv from 'dotenv';
 import userRouter from './routes/userRoute.mjs';
 import courseRouter from './routes/courseRoute.mjs';
 import connectDB from './config/db.mjs';
+import cookieParser from 'cookie-parser';
 import errorMiddleware from './middleware/errorMiddleware.mjs';
 import customerRouter from './routes/customerRoute.mjs';
+import socialNetworkRouter from './routes/socialNetworkRoute.mjs';
 
 // Run dotenv config
 dotenv.config();
@@ -24,11 +26,13 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 // API Resources use
 app.use('/api/users', userRouter);
 app.use('/api/customers', customerRouter);
 app.use('/api/courses', courseRouter);
+app.use('/api/social-networks', socialNetworkRouter);
 
 app.use(errorMiddleware.notFound);
 app.use(errorMiddleware.errorHandler);

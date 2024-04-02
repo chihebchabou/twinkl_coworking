@@ -1,7 +1,7 @@
 // Dependencies
 
 
-import SocialNetwork from "../models/SocialNetwork.mjs";
+import SocialNetwork, { validate } from "../models/SocialNetwork.mjs";
 import ResponseError from "../utils/ResponseError.mjs";
 
 // Container for Course Controller
@@ -31,7 +31,7 @@ SocialNetworksController.store = async (req, res) => {
         throw new ResponseError(400, "Déjà inscrit");
 
     // Add socialNetwork to the database
-    const socialNetworkData = await SocialNetwork.create(value);
+    const socialNetworkData = await SocialNetwork.create({ user: req.user._id, ...value });
 
     // Return successful response
     res.status(201).json({
