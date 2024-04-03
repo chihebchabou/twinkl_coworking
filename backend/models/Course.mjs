@@ -4,6 +4,7 @@ import { slugify } from "../utils/helpers.mjs";
 import Joi from "joi";
 
 const courseSchema = new Schema({
+    user: { type: Schema.Types.ObjectId, ref: 'User' },
     courseName: { type: String, required: true, trim: true },
     slug: { type: String, trim: true },
     description: { type: String, required: true, trim: true },
