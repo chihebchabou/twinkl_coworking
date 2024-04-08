@@ -10,6 +10,7 @@ const courseSchema = new Schema({
     description: { type: String, required: true, trim: true },
     duration: { type: String, required: true, trim: true },
     category: { type: String, required: true, trim: true },
+    skills: { type: [String], required: true, trim: true },
     online: { type: Boolean, default: false },
 });
 
@@ -26,6 +27,7 @@ export const validate = (data) => {
         description: Joi.string().required(),
         duration: Joi.string().required(),
         category: Joi.string().required(),
+        skills: Joi.array().items(Joi.string()).required(),
         online: Joi.boolean().default(false),
     });
     return schema.validate(data, { abortEarly: false })

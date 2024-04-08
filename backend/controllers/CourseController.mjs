@@ -16,10 +16,10 @@ CourseController.index = async (req, res) => {
 // @route POST /api/courses
 CourseController.store = async (req, res) => {
     // Get data from request body
-    const { courseName, description, duration, category } = req.body;
+    const { courseName, description, duration, category, skills } = req.body;
 
     // Validate request data
-    const { error, value } = validate({ courseName, description, duration, category });
+    const { error, value } = validate({ courseName, description, duration, category, skills });
 
     // Check for errors
     if (error) {
@@ -67,10 +67,10 @@ CourseController.update = async (req, res) => {
     const userId = req.user.id;
 
     // Get data from request body
-    const { courseName, description, duration, category } = req.body;
+    const { courseName, description, duration, category, skills } = req.body;
 
     // Validate request data
-    const { error, value } = validate({ courseName, description, duration, category });
+    const { error, value } = validate({ courseName, description, duration, category, skills });
 
     // Check for errors
     if (error) {
