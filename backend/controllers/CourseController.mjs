@@ -1,6 +1,7 @@
 // Dependencies
 
 import Course, { validate } from "../models/Course.mjs";
+import StudyField from "../models/StudyField.mjs";
 import User from "../models/User.mjs";
 import ResponseError from "../utils/ResponseError.mjs";
 
@@ -16,10 +17,10 @@ CourseController.index = async (req, res) => {
 // @route POST /api/courses
 CourseController.store = async (req, res) => {
     // Get data from request body
-    const { courseName, description, duration, category, skills } = req.body;
+    const { courseName, description, duration, studyField, skills, price } = req.body;
 
     // Validate request data
-    const { error, value } = validate({ courseName, description, duration, category, skills });
+    const { error, value } = validate({ courseName, description, duration, studyField, skills, price });
 
     // Check for errors
     if (error) {
@@ -30,10 +31,21 @@ CourseController.store = async (req, res) => {
     // Check if course exists
     const courseExists = await Course.findOne({ courseName });
     if (courseExists)
-        throw new ResponseError(400, "Déjà inscrit");
+        throw new ResponseError(400, `${courseName} déjà existe`);
+
+    // Check if studyField exists
+    let newStudyField;
+    const studyFieldExists = await StudyField.findOne({ studyField }).select('-user');
+    if (!studyFieldExists) {
+        newStudyField = new StudyField({ user: req.user._id, studyField });
+        newStudyField = (await newStudyField.save())._doc;
+        delete newStudyField.user
+    } else {
+        newStudyField = studyFieldExists
+    }
 
     // Add course to the database
-    const course = await Course.create({ user: req.user._id, ...value });
+    const course = await Course.create({ user: req.user._id, ...value, studyField: newStudyField });
 
     // Return successful response
     res.status(201).json({
@@ -67,10 +79,10 @@ CourseController.update = async (req, res) => {
     const userId = req.user.id;
 
     // Get data from request body
-    const { courseName, description, duration, category, skills } = req.body;
+    const { courseName, description, duration, studyField, skills, price } = req.body;
 
     // Validate request data
-    const { error, value } = validate({ courseName, description, duration, category, skills });
+    const { error, value } = validate({ courseName, description, duration, studyField, skills, price });
 
     // Check for errors
     if (error) {

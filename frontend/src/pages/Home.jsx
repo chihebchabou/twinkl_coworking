@@ -69,8 +69,8 @@ const Home = () => {
                             <label htmlFor="category">Choisis le domaine qui t'intéresse</label>
 
 
-                            <select id="categories" name='category' className='p-3 bg-transparent outline-none border-b border-black focus:border-brightRed'>
-                                <option selected disabled="on" value="" >Veuillez sélectionner</option>
+                            <select id="studyFields" name='studyField' className='p-3 bg-transparent outline-none border-b border-black focus:border-brightRed'>
+                                <option value=""  >Veuillez sélectionner</option>
                                 <option value="Design">Design</option>
                                 <option value="Marketing">Marketing</option>
                                 <option value="Data">Data</option>

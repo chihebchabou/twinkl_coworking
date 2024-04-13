@@ -28,15 +28,13 @@ UserController.signup = async (req, res) => {
     // Return successful response
     res.status(201).json({
         message: 'User Registered successfully',
-        user: {
-            _id: user._id,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            phone: user.phone,
-            email: user.email,
-            address: user.address,
-            socialMedia: user.socialMedia
-        }
+        _id: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        phone: user.phone,
+        email: user.email,
+        address: user.address,
+        socialMedia: user.socialMedia
     })
 };
 
@@ -53,14 +51,12 @@ UserController.signin = async (req, res) => {
     // Return successful response
     res.json({
         message: "User signed in successfully",
-        user: {
-            _id: user._id,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            phone: user.phone,
-            email: user.email,
-            address: user.address,
-        }
+        _id: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        phone: user.phone,
+        email: user.email,
+        address: user.address,
     });
 };
 

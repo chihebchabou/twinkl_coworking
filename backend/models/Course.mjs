@@ -2,6 +2,7 @@
 import { Schema, model } from "mongoose";
 import { slugify } from "../utils/helpers.mjs";
 import Joi from "joi";
+import { studyFieldSchema } from "./StudyField.mjs";
 
 const courseSchema = new Schema({
     user: { type: Schema.Types.ObjectId, ref: 'User' },
@@ -9,8 +10,9 @@ const courseSchema = new Schema({
     slug: { type: String, trim: true },
     description: { type: String, required: true, trim: true },
     duration: { type: String, required: true, trim: true },
-    category: { type: String, required: true, trim: true },
+    studyField: { type: studyFieldSchema, required: true, trim: true },
     skills: { type: [String], required: true, trim: true },
+    price: { type: Number, required: true, trim: true },
     online: { type: Boolean, default: false },
 });
 
@@ -26,8 +28,9 @@ export const validate = (data) => {
         courseName: Joi.string().required(),
         description: Joi.string().required(),
         duration: Joi.string().required(),
-        category: Joi.string().required(),
+        studyField: Joi.string().required(),
         skills: Joi.array().items(Joi.string()).required(),
+        price: Joi.number().required(),
         online: Joi.boolean().default(false),
     });
     return schema.validate(data, { abortEarly: false })

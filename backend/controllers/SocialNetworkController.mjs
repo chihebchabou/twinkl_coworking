@@ -6,16 +6,16 @@ import User from "../models/User.mjs";
 import ResponseError from "../utils/ResponseError.mjs";
 
 // Container for Course Controller
-const SocialNetworksController = {};
+const SocialNetworkController = {};
 
 // @route GET /api/social-networks
-SocialNetworksController.index = async (req, res) => {
+SocialNetworkController.index = async (req, res) => {
     const socialNetworks = await SocialNetwork.find();
     res.json(socialNetworks)
 };
 
 // @route POST /api/social-networks
-SocialNetworksController.store = async (req, res) => {
+SocialNetworkController.store = async (req, res) => {
     // Get data from request body
     const { socialNetwork, socialNetworkURI } = req.body;
 
@@ -31,7 +31,7 @@ SocialNetworksController.store = async (req, res) => {
     // Check if socialNetwork exists
     const socialNetworkExists = await SocialNetwork.findOne({ socialNetwork });
     if (socialNetworkExists)
-        throw new ResponseError(400, "Déjà inscrit");
+        throw new ResponseError(400, `${socialNetwork} déjà existe`);
 
     // Add socialNetwork to the database
     const socialNetworkData = await SocialNetwork.create({ user: req.user._id, ...value });
@@ -44,7 +44,7 @@ SocialNetworksController.store = async (req, res) => {
 };
 
 // @route GET /api/social-networks/:id
-SocialNetworksController.show = async (req, res) => {
+SocialNetworkController.show = async (req, res) => {
     // Get id from request params
     const { id } = req.params;
 
@@ -60,7 +60,7 @@ SocialNetworksController.show = async (req, res) => {
 };
 
 // @route PUT /api/social-networks/:id
-SocialNetworksController.update = async (req, res) => {
+SocialNetworkController.update = async (req, res) => {
     // Get id from request params
     const { id } = req.params;
 
@@ -93,7 +93,7 @@ SocialNetworksController.update = async (req, res) => {
 };
 
 // @route DELETE /api/social-networks/:id
-SocialNetworksController.destroy = async (req, res) => {
+SocialNetworkController.destroy = async (req, res) => {
     // Get id from request params
     const { id } = req.params;
 
@@ -114,4 +114,4 @@ SocialNetworksController.destroy = async (req, res) => {
 };
 
 // Export the module
-export default SocialNetworksController;
+export default SocialNetworkController;

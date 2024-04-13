@@ -11,6 +11,10 @@ body {
     @apply text-darkGrayishBlue !important
 }
 
+.field [href]:hover {
+    text-decoration: underline;
+}
+
 /* Hamburger Menu */
 .hamburger {
     cursor: pointer;

@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false)
@@ -12,9 +13,9 @@ const Navbar = () => {
                 </div>
                 {/* Menu Items */}
                 <div className="hidden md:flex space-x-9">
-                    <a href="" className='hover:text-darkGrayishBlue'>Acceuil</a>
-                    <a href="" className='hover:text-darkGrayishBlue'>No formations</a>
-                    <a href="" className='hover:text-darkGrayishBlue'>Découvrir Twinkl</a>
+                    <Link to="/" className='hover:text-darkGrayishBlue'>Acceuil</Link>
+                    <Link to="/courses" className='hover:text-darkGrayishBlue'>Nos formations</Link>
+                    <Link to="/about" className='hover:text-darkGrayishBlue'>Découvrir Twinkl</Link>
                 </div>
                 {/* Button */}
                 {/* <a href="#" className="hidden p-3 px-6 pt-2 text-white bg-brightRed rounded-full baseline hover:bg-brightRedLight md:block ">Rejoins-nous</a> */}
@@ -30,9 +31,9 @@ const Navbar = () => {
             {/* Mobile Menu */}
             <div className="md:hidden">
                 <div id="menu" className={`absolute ${isOpen ? 'flex' : 'hidden'} flex-col items-center  self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md`}>
-                    <a href="" className='hover:text-darkGrayishBlue'>Acceuil</a>
-                    <a href="" className='hover:text-darkGrayishBlue'>No formations</a>
-                    <a href="" className='hover:text-darkGrayishBlue'>Découvrir Twinkl</a>
+                    <Link to="/" className='hover:text-darkGrayishBlue'>Acceuil</Link>
+                    <Link to="/courses" className='hover:text-darkGrayishBlue'>Nos formations</Link>
+                    <Link to="/about" className='hover:text-darkGrayishBlue'>Découvrir Twinkl</Link>
                 </div>
             </div>
         </nav>

@@ -9,6 +9,7 @@ import cookieParser from 'cookie-parser';
 import errorMiddleware from './middleware/errorMiddleware.mjs';
 import customerRouter from './routes/customerRoute.mjs';
 import socialNetworkRouter from './routes/socialNetworkRoute.mjs';
+import studyFieldRouter from './routes/studyFieldRoute.mjs';
 
 // Run dotenv config
 dotenv.config();
@@ -33,7 +34,9 @@ app.use('/api/users', userRouter);
 app.use('/api/customers', customerRouter);
 app.use('/api/courses', courseRouter);
 app.use('/api/social-networks', socialNetworkRouter);
+app.use('/api/study-fields', studyFieldRouter);
 
+// Error Middlewares use
 app.use(errorMiddleware.notFound);
 app.use(errorMiddleware.errorHandler);
 
