@@ -21,6 +21,8 @@ userSchema.methods.login = function (res) {
         expiresIn: '30d',
     });
 
+    console.log(token)
+
     res.cookie('jwt', token, {
         httpOnly: true,
         secure: process.env.NODE_ENV !== 'development', // Use secure cookies in production

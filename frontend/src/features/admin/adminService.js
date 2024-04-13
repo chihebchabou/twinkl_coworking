@@ -11,5 +11,11 @@ adminService.login = async (userData) => {
     return response.data
 }
 
+// Profile user service
+adminService.profile = async (userData) => {
+    const response = await axios.get(API_URL + 'profile');
+    return response.data
+}
+
 
 export default adminService

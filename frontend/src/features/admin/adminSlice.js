@@ -21,6 +21,20 @@ export const login = createAsyncThunk('admin/login', async (userData, thunkAPI) 
     }
 });
 
+// Profile user
+export const profile = createAsyncThunk('admin/profile', async (userData, thunkAPI) => {
+    try {
+        return await adminService.profile();
+    } catch (error) {
+        // console.log(error);
+        const message =
+            (error.message && error.response.data && error.response.data.message) ||
+            error.message ||
+            error.toString();
+        return thunkAPI.rejectWithValue(message);
+    }
+});
+
 const adminSlice = createSlice({
     name: 'admin',
     initialState,
@@ -34,11 +48,19 @@ const adminSlice = createSlice({
         builder.addCase(login.pending, state => {
             state.status = 'pending'
         }).addCase(login.fulfilled, (state, action) => {
-            state.status = 'succeeded',
-                state.data = action.payload
+            state.status = 'succeeded';
+            state.data = action.payload;
         }).addCase(login.rejected, (state, action) => {
-            state.status = 'failed',
-                state.error = action.payload
+            state.status = 'failed';
+            state.error = action.payload;
+        }).addCase(profile.pending, state => {
+            state.status = 'pending'
+        }).addCase(profile.fulfilled, (state, action) => {
+            state.status = 'succeeded';
+            state.data = action.payload;
+        }).addCase(profile.rejected, (state, action) => {
+            state.status = 'failed';
+            state.error = action.payload;
         });
     }
 });

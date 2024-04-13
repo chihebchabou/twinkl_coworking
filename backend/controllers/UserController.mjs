@@ -62,4 +62,16 @@ UserController.signin = async (req, res) => {
 
 UserController.signout = async (req, res) => { };
 
+UserController.profile = async (req, res) => {
+    res.json({
+        message: "User signed in successfully",
+        _id: req.user._id,
+        firstName: req.user.firstName,
+        lastName: req.user.lastName,
+        phone: req.user.phone,
+        email: req.user.email,
+        address: req.user.address,
+    })
+}
+
 export default UserController;
