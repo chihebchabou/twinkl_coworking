@@ -12,12 +12,12 @@ export const login = createAsyncThunk('admin/login', async (userData, thunkAPI) 
     try {
         return await adminService.login(userData);
     } catch (error) {
-        // console.log(error);
+        console.log(error);
         const message =
-            (error.message && error.response.data && error.response.data.message) ||
+            (error.message && error.response.data && error.response.status && error.response.data.message) ||
             error.message ||
             error.toString();
-        return thunkAPI.rejectWithValue(message);
+        return thunkAPI.rejectWithValue({ message, status: error.response.status });
     }
 });
 
@@ -26,12 +26,12 @@ export const profile = createAsyncThunk('admin/profile', async (userData, thunkA
     try {
         return await adminService.profile();
     } catch (error) {
-        // console.log(error);
+        console.log(error);
         const message =
-            (error.message && error.response.data && error.response.data.message) ||
+            (error.message && error.response.data && error.response.status && error.response.data.message) ||
             error.message ||
             error.toString();
-        return thunkAPI.rejectWithValue(message);
+        return thunkAPI.rejectWithValue({ message, status: error.response.status });
     }
 });
 

@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { login, reset } from "../../features/admin/adminSlice";
-import { useEffect } from "react";
+import { login, profile, reset } from "../../features/admin/adminSlice";
+import { useEffect, useRef } from "react";
+import { toast } from "react-toastify";
 
 const Login = () => {
     const dispatch = useDispatch()
@@ -15,22 +16,31 @@ const Login = () => {
         dispatch(login({ email, password }))
     }
 
-
     useEffect(() => {
-        if (status === "failed") {
-            setTimeout(() => dispatch(reset()), 5000)
+        if (!data && status === "idle") {
+            const request = async () => {
+                // await new Promise(resolve => setTimeout(resolve, 2000))
+                dispatch(profile())
+            }
+            request()
         }
 
-        if (data || status === "succeeded") {
+        if (error.status === 400 && status === "failed") {
+            toast.error(error.message)
+        }
+
+        if (data) {
             navigate('/admin')
-            setTimeout(() => dispatch(reset()), 5000)
         }
+    }, [status, data, error]);
 
-    }, [status])
+
+    if (status == "pending") {
+        return <div style={{ fontSize: 100 }}>Loading...</div>
+    }
 
     return (
         <main className='flex flex-col h-screen w-full justify-center items-center px-4'>
-            {error}
             <form onSubmit={onFormSubmitted} className='border border-gray-600 rounded-md w-[500px] lg:w-[400px]'>
                 <h1 className='text-center p-5 bg-sky-700 text-white'>Administration</h1>
                 <div className='p-5 space-y-3'>
@@ -51,5 +61,8 @@ const Login = () => {
         </main>
     )
 }
+
+
+
 
 export default Login
