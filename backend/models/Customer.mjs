@@ -14,7 +14,7 @@ export const validate = (data) => {
     const schema = Joi.object({
         firstName: Joi.string().required(),
         lastName: Joi.string().required(),
-        phone: Joi.string().pattern(/^(\+\d{1,2}\s)?\(?\d{2}\)?[\s.-]\d{3}[\s.-]\d{3}$/).required(),
+        phone: Joi.string().length(8).required(),
         email: Joi.string().email().required(),
         course: Joi.string().required(),
     });

@@ -35,9 +35,9 @@ CourseController.store = async (req, res) => {
 
     // Check if studyField exists
     let newStudyField;
-    const studyFieldExists = await StudyField.findOne({ studyField }).select('-user');
+    const studyFieldExists = await StudyField.findOne({ name: studyField }).select('-user');
     if (!studyFieldExists) {
-        newStudyField = new StudyField({ user: req.user._id, studyField });
+        newStudyField = new StudyField({ user: req.user._id, name: studyField });
         newStudyField = (await newStudyField.save())._doc;
         delete newStudyField.user
     } else {
@@ -50,7 +50,7 @@ CourseController.store = async (req, res) => {
     // Return successful response
     res.status(201).json({
         message: 'Course added successfully',
-        ...course._doc
+        course: course._doc
     });
 };
 
@@ -103,7 +103,7 @@ CourseController.update = async (req, res) => {
     // Make sure that slug field is updated
     await updatedCourse.save();
 
-    res.json({ message: 'Course updated successfully', ...updatedCourse._doc })
+    res.json({ message: 'Course updated successfully', course: updatedCourse._doc })
 };
 
 // @route DELETE /api/courses/:id
@@ -124,7 +124,7 @@ CourseController.destroy = async (req, res) => {
     if (!deletedCourse)
         throw new ResponseError(404, 'Course not found');
 
-    res.json({ message: 'Course deleted successfully', ...deletedCourse._doc })
+    res.json({ message: 'Course deleted successfully', course: deletedCourse._doc })
 };
 
 // Export the module

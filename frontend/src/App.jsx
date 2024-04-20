@@ -2,14 +2,16 @@ import './App.css'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Courses from './pages/Courses';
-import CourseDetail from './pages/CourseDetail';
+import Courses from './pages/courses/Courses';
+import CourseDetail from './pages/courses/CourseDetail';
 
 import Dashboard from './pages/admin'
 import Login from './pages/admin/Login';
 import Main from './pages';
 import Home from './pages/Home';
 import PrivateRoute from './components/PrivateRoute';
+import CustomerList from './pages/admin/CustomerList';
+import CreateCourse from './pages/courses/CreateCourse';
 
 
 const App = () => {
@@ -29,7 +31,14 @@ const App = () => {
         {/* Admin */}
         <Route path='admin' >
           <Route element={<PrivateRoute />}>
-            <Route index element={<Dashboard />} />
+            <Route path='' element={<Dashboard />} >
+              <Route path='customers' element={<CustomerList />} />
+              <Route path='courses'>
+                <Route index element={<Courses />} />
+                <Route path='create' element={<CreateCourse />} />
+              </Route>
+
+            </Route>
           </Route>
           <Route path='login' element={<Login />} />
         </Route>

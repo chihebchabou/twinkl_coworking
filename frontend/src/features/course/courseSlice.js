@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import adminService from "./adminService";
+import courseService from "./courseService";
 
 const initialState = {
     data: null,
@@ -8,10 +8,10 @@ const initialState = {
     error: null
 }
 
-// Login user
-export const login = createAsyncThunk('admin/login', async (userData, thunkAPI) => {
+// Get all courses
+export const getAllCourses = createAsyncThunk('course/getAll', async (_, thunkAPI) => {
     try {
-        return await adminService.login(userData);
+        return await courseService.getAllCourses();
     } catch (error) {
         console.log(error);
         const message =
@@ -22,10 +22,10 @@ export const login = createAsyncThunk('admin/login', async (userData, thunkAPI) 
     }
 });
 
-// Profile user
-export const profile = createAsyncThunk('admin/profile', async (userData, thunkAPI) => {
+// Create new course
+export const createCourse = createAsyncThunk('course/create', async (courseData, thunkAPI) => {
     try {
-        return await adminService.profile();
+        return await courseService.createCourse(courseData);
     } catch (error) {
         console.log(error);
         const message =
@@ -37,7 +37,7 @@ export const profile = createAsyncThunk('admin/profile', async (userData, thunkA
 });
 
 const adminSlice = createSlice({
-    name: 'admin',
+    name: "course",
     initialState,
     reducers: {
         reset: (state) => {
@@ -47,27 +47,26 @@ const adminSlice = createSlice({
         }
     },
     extraReducers: builder => {
-        builder.addCase(login.pending, state => {
+        builder.addCase(getAllCourses.pending, state => {
             state.status = 'pending'
-        }).addCase(login.fulfilled, (state, action) => {
+        }).addCase(getAllCourses.fulfilled, (state, action) => {
             state.status = 'succeeded';
-            state.message = action.payload.message
-            state.data = action.payload.user;
-        }).addCase(login.rejected, (state, action) => {
+            state.data = action.payload;
+        }).addCase(getAllCourses.rejected, (state, action) => {
             state.status = 'failed';
             state.error = action.payload;
-        }).addCase(profile.pending, state => {
+        }).addCase(createCourse.pending, state => {
             state.status = 'pending'
-        }).addCase(profile.fulfilled, (state, action) => {
+        }).addCase(createCourse.fulfilled, (state, action) => {
             state.status = 'succeeded';
             state.message = action.payload.message
-            state.data = action.payload.user;
-        }).addCase(profile.rejected, (state, action) => {
+            state.data.push(action.payload.course);
+        }).addCase(createCourse.rejected, (state, action) => {
             state.status = 'failed';
             state.error = action.payload;
-        });
+        })
     }
-});
+})
 
 export const { reset } = adminSlice.actions;
 export default adminSlice.reducer

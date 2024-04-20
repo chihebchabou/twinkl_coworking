@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { profile } from "../features/admin/adminSlice";
+import { profile, reset } from "../features/admin/adminSlice";
 import { Outlet, Navigate } from "react-router-dom"
 import { toast } from "react-toastify";
 
@@ -15,12 +15,14 @@ const PrivateRoute = () => {
                 // await new Promise(resolve => setTimeout(resolve, 2000))
                 dispatch(profile())
             }
-            request()
+            request();
         }
 
         if (error && status === "failed") {
             toast.error(error.message)
         }
+
+
     }, [status]);
 
     if (status === "pending")

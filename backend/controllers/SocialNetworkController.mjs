@@ -39,7 +39,7 @@ SocialNetworkController.store = async (req, res) => {
     // Return successful response
     res.status(201).json({
         message: 'SocialNetwork added successfully',
-        ...socialNetworkData._doc
+        socialNetwork: socialNetworkData._doc
     });
 };
 
@@ -89,7 +89,7 @@ SocialNetworkController.update = async (req, res) => {
     if (!updatedSocialNetwork)
         throw new ResponseError(404, 'SocialNetwork not found');
 
-    res.json({ message: 'SocialNetwork updated successfully', ...updatedSocialNetwork._doc })
+    res.json({ message: 'SocialNetwork updated successfully', socialNetwork: updatedSocialNetwork._doc })
 };
 
 // @route DELETE /api/social-networks/:id
@@ -110,7 +110,7 @@ SocialNetworkController.destroy = async (req, res) => {
     if (!deletedSocialNetwork)
         throw new ResponseError(404, 'SocialNetwork not found');
 
-    res.json({ message: 'Course deleted successfully', ...deletedSocialNetwork._doc })
+    res.json({ message: 'Course deleted successfully', socialNetwork: deletedSocialNetwork._doc })
 };
 
 // Export the module

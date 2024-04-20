@@ -1,25 +1,41 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux";
+import { BrowserRouter as Router, Routes, Route, Outlet } from "react-router-dom";
 import { reset } from "../../features/admin/adminSlice";
 import { toast } from "react-toastify";
+import Sidebar from "../../components/Sidebar";
+import CustomerList from "./CustomerList";
+import Courses from "../courses/Courses";
 
 
 const Dashboard = () => {
     const dispatch = useDispatch()
 
-    const { data } = useSelector(state => state.admin);
+    const { data, status } = useSelector(state => state.admin);
 
     useEffect(() => {
-        dispatch(reset())
+        const dispatchReset = async () => {
+            await new Promise(resolve => setTimeout(resolve, 2000))
+            dispatch(reset())
+        }
 
-        if (data) {
-            toast.success(data.message)
+
+        return () => {
+            if (data && status === "succeeded") {
+                toast.success(data.message)
+                dispatchReset()
+            }
         }
 
     }, [])
 
     return (
-        <div>Dashboard</div>
+        <div className="w-full">
+            <Sidebar />
+            <div className="lg:ms-[300px] p-10 h-full">
+                <Outlet />
+            </div>
+        </div>
     )
 }
 

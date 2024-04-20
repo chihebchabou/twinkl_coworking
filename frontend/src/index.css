@@ -61,3 +61,17 @@ body {
 .open .hamburger-bottom {
     transform: rotate(-45deg) translateY(6px) translate(-6px);
 }
+
+.users th,
+td {
+    padding: 25px;
+
+}
+
+.users tr {
+    border-bottom: #dfdfdf solid 1px;
+}
+
+.users tr:last-child {
+    border-bottom: none;
+}

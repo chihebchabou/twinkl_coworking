@@ -19,19 +19,22 @@ const Login = () => {
     useEffect(() => {
         if (!data && status === "idle") {
             const request = async () => {
-                // await new Promise(resolve => setTimeout(resolve, 2000))
+                // await new Promise(resolve => setTimeout(resolve, 5000))
                 dispatch(profile())
             }
-            request()
+            request();
         }
 
-        if (error.status === 400 && status === "failed") {
+        if (error !== null && error.status === 400 && status === "failed") {
             toast.error(error.message)
         }
 
         if (data) {
             navigate('/admin')
         }
+
+
+
     }, [status, data, error]);
 
 
@@ -39,7 +42,9 @@ const Login = () => {
         return <div style={{ fontSize: 100 }}>Loading...</div>
     }
 
-    return (
+
+
+    return status === "failed" && (
         <main className='flex flex-col h-screen w-full justify-center items-center px-4'>
             <form onSubmit={onFormSubmitted} className='border border-gray-600 rounded-md w-[500px] lg:w-[400px]'>
                 <h1 className='text-center p-5 bg-sky-700 text-white'>Administration</h1>

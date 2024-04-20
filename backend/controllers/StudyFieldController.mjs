@@ -32,7 +32,7 @@ StudyFieldController.destroy = async (req, res) => {
     if (!deletedStudyField)
         throw new ResponseError(404, 'StudyField not found');
 
-    res.json({ message: 'Course deleted successfully', ...deletedStudyField._doc })
+    res.json({ message: 'Course deleted successfully', StudyField: deletedStudyField._doc })
 };
 
 // Export the module
