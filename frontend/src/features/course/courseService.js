@@ -11,6 +11,12 @@ courseService.getAllCourses = async () => {
     return response.data
 }
 
+// Get single course service
+courseService.getCourse = async (slug) => {
+    const response = await axios.get(API_URL + slug);
+    return response.data;
+}
+
 // Create new course service
 courseService.createCourse = async (data) => {
     const response = await axios.post(API_URL, data);

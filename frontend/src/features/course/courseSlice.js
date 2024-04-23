@@ -2,7 +2,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import courseService from "./courseService";
 
 const initialState = {
-    data: null,
+    courses: null,
+    currentCourse: null,
     status: "idle", // 'idle' 'pending' 'failed' 'succeeded'
     message: "",
     error: null
@@ -12,6 +13,20 @@ const initialState = {
 export const getAllCourses = createAsyncThunk('course/getAll', async (_, thunkAPI) => {
     try {
         return await courseService.getAllCourses();
+    } catch (error) {
+        console.log(error);
+        const message =
+            (error.message && error.response.data && error.response.status && error.response.data.message) ||
+            error.message ||
+            error.toString();
+        return thunkAPI.rejectWithValue({ message, status: error.response.status });
+    }
+});
+
+// Get single course
+export const getCourse = createAsyncThunk('course/getOne', async (slug, thunkAPI) => {
+    try {
+        return await courseService.getCourse(slug);
     } catch (error) {
         console.log(error);
         const message =
@@ -36,7 +51,7 @@ export const createCourse = createAsyncThunk('course/create', async (courseData,
     }
 });
 
-const adminSlice = createSlice({
+const courseSlice = createSlice({
     name: "course",
     initialState,
     reducers: {
@@ -51,8 +66,17 @@ const adminSlice = createSlice({
             state.status = 'pending'
         }).addCase(getAllCourses.fulfilled, (state, action) => {
             state.status = 'succeeded';
-            state.data = action.payload;
+            state.currentCourse = null;
+            state.courses = action.payload;
         }).addCase(getAllCourses.rejected, (state, action) => {
+            state.status = 'failed';
+            state.error = action.payload;
+        }).addCase(getCourse.pending, state => {
+            state.status = 'pending'
+        }).addCase(getCourse.fulfilled, (state, action) => {
+            state.status = 'succeeded';
+            state.currentCourse = action.payload;
+        }).addCase(getCourse.rejected, (state, action) => {
             state.status = 'failed';
             state.error = action.payload;
         }).addCase(createCourse.pending, state => {
@@ -68,5 +92,5 @@ const adminSlice = createSlice({
     }
 })
 
-export const { reset } = adminSlice.actions;
-export default adminSlice.reducer
+export const { reset } = courseSlice.actions;
+export default courseSlice.reducer

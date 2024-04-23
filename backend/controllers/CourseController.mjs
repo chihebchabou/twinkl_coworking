@@ -54,13 +54,13 @@ CourseController.store = async (req, res) => {
     });
 };
 
-// @route GET /api/courses/:id
+// @route GET /api/courses/:slug
 CourseController.show = async (req, res) => {
-    // Get id from request params
-    const { id } = req.params;
+    // Get slug from request params
+    const { slug } = req.params;
 
     // Lookup the course
-    const course = await Course.findById(id);
+    const course = await Course.findOne({ slug });
 
     // Check if the course exists or not
     if (!course)
@@ -70,10 +70,10 @@ CourseController.show = async (req, res) => {
     res.json(course)
 };
 
-// @route PUT /api/courses/:id
+// @route PUT /api/courses/:slug
 CourseController.update = async (req, res) => {
-    // Get id from request params
-    const { id } = req.params;
+    // Get slug from request params
+    const { slug } = req.params;
 
     // Get user id
     const userId = req.user.id;
@@ -95,7 +95,7 @@ CourseController.update = async (req, res) => {
     if (!user)
         throw new ResponseError(404, 'User not found');
 
-    const updatedCourse = await Course.findOneAndUpdate({ _id: id, user: userId }, value, { new: true });
+    const updatedCourse = await Course.findOneAndUpdate({ slug, user: userId }, value, { new: true });
 
     if (!updatedCourse)
         throw new ResponseError(404, 'Course not found');
@@ -106,10 +106,10 @@ CourseController.update = async (req, res) => {
     res.json({ message: 'Course updated successfully', course: updatedCourse._doc })
 };
 
-// @route DELETE /api/courses/:id
+// @route DELETE /api/courses/:slug
 CourseController.destroy = async (req, res) => {
-    // Get id from request params
-    const { id } = req.params;
+    // Get slug from request params
+    const { slug } = req.params;
 
     // Get user id
     const userId = req.user.id;
@@ -119,7 +119,7 @@ CourseController.destroy = async (req, res) => {
     if (!user)
         throw new ResponseError(404, 'User not found');
 
-    const deletedCourse = await Course.findOneAndDelete({ _id: id, user: userId });
+    const deletedCourse = await Course.findOneAndDelete({ slug, user: userId });
 
     if (!deletedCourse)
         throw new ResponseError(404, 'Course not found');

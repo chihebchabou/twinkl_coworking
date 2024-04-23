@@ -7,7 +7,7 @@ const courseRouter = Router();
 
 courseRouter.route('/').get(asyncMiddleware(CourseController.index)).post(asyncMiddleware(auth), asyncMiddleware(CourseController.store));
 
-courseRouter.route('/:id').get(asyncMiddleware(CourseController.show)).put(asyncMiddleware(auth), asyncMiddleware(CourseController.update)).delete(asyncMiddleware(auth), asyncMiddleware(CourseController.destroy));
+courseRouter.route('/:slug').get(asyncMiddleware(CourseController.show)).put(asyncMiddleware(auth), asyncMiddleware(CourseController.update)).delete(asyncMiddleware(auth), asyncMiddleware(CourseController.destroy));
 
 
 export default courseRouter;

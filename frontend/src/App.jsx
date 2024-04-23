@@ -11,7 +11,8 @@ import Main from './pages';
 import Home from './pages/Home';
 import PrivateRoute from './components/PrivateRoute';
 import CustomerList from './pages/admin/CustomerList';
-import CreateCourse from './pages/courses/CreateCourse';
+import CourseCreate from './pages/courses/CourseCreate';
+import CourseEdit from './pages/courses/CourseEdit';
 
 
 const App = () => {
@@ -35,7 +36,8 @@ const App = () => {
               <Route path='customers' element={<CustomerList />} />
               <Route path='courses'>
                 <Route index element={<Courses />} />
-                <Route path='create' element={<CreateCourse />} />
+                <Route path='create' element={<CourseCreate />} />
+                <Route path=':slug/edit' element={<CourseEdit />} />
               </Route>
 
             </Route>
