@@ -38,7 +38,8 @@ const CourseCreate = () => {
         if (!skill) {
             toast.error("Vous devez entrer une competence")
         } else {
-            setCourse({ ...course, skill: "", skills: [...course.skills, skill] });
+            setCourse({ ...course, skills: [...course.skills, skill] });
+            setSkill('')
         }
     }
 

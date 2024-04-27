@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const API_URL = '/api/courses/'
+const API_URL = '/api/courses/';
 
-// Container for adminService
+// Container for courseService
 const courseService = {};
 
 // Get all courses service
@@ -24,7 +24,14 @@ courseService.createCourse = async (data) => {
 }
 
 // Update course service
+courseService.updateCourse = async (slug, data) => {
+
+    console.log(slug, data)
+    const response = await axios.put(API_URL + slug, data);
+    return response.data;
+}
 
 // Delete course service
 
+// Export the module
 export default courseService;

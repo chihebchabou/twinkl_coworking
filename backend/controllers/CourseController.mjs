@@ -84,6 +84,8 @@ CourseController.update = async (req, res) => {
     // Validate request data
     const { error, value } = validate({ courseName, description, duration, studyField, skills, price });
 
+    console.log(value)
+
     // Check for errors
     if (error) {
         console.log(error)
@@ -95,13 +97,18 @@ CourseController.update = async (req, res) => {
     if (!user)
         throw new ResponseError(404, 'User not found');
 
-    const updatedCourse = await Course.findOneAndUpdate({ slug, user: userId }, value, { new: true });
+    const updatedCourse = await Course.findOneAndUpdate({ slug, user: userId }, { courseName: value.courseName, description: value.description, duration: value.duration, skills: value.skills, price: value.price }, { new: true });
+
+    // const updatedCourse = await Course.findOne({ slug, user: userId })
 
     if (!updatedCourse)
         throw new ResponseError(404, 'Course not found');
 
-    // Make sure that slug field is updated
+    // Make sure that slug field and studyField are updated
+    updatedCourse.studyField.name = value.studyField;
     await updatedCourse.save();
+
+    console.log(updatedCourse)
 
     res.json({ message: 'Course updated successfully', course: updatedCourse._doc })
 };

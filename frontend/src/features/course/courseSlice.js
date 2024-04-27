@@ -51,6 +51,20 @@ export const createCourse = createAsyncThunk('course/create', async (courseData,
     }
 });
 
+// Update course
+export const updateCourse = createAsyncThunk('course/update', async ({ slug, courseData }, thunkAPI) => {
+    try {
+        return await courseService.updateCourse(slug, courseData);
+    } catch (error) {
+        console.log(error);
+        const message =
+            (error.message && error.response.data && error.response.status && error.response.data.message) ||
+            error.message ||
+            error.toString();
+        return thunkAPI.rejectWithValue({ message, status: error.response.status });
+    }
+});
+
 const courseSlice = createSlice({
     name: "course",
     initialState,
@@ -84,8 +98,18 @@ const courseSlice = createSlice({
         }).addCase(createCourse.fulfilled, (state, action) => {
             state.status = 'succeeded';
             state.message = action.payload.message
-            state.data.push(action.payload.course);
+            state.courses.push(action.payload.course);
         }).addCase(createCourse.rejected, (state, action) => {
+            state.status = 'failed';
+            state.error = action.payload;
+        }).addCase(updateCourse.pending, state => {
+            state.status = 'pending'
+        }).addCase(updateCourse.fulfilled, (state, action) => {
+            state.status = 'succeeded';
+            state.message = action.payload.message
+            state.currentCourse = action.payload.course
+            state.courses = state.courses.map(course => course._id === action.payload.course._id ? { ...action.payload.course } : course);
+        }).addCase(updateCourse.rejected, (state, action) => {
             state.status = 'failed';
             state.error = action.payload;
         })

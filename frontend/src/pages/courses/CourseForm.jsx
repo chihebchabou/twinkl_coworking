@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CourseForm = ({ onSubmit, course, skill, onChange, onAddSkill }) => {
+const CourseForm = ({ onSubmit, course, skill, onChange, onAddSkill, onRemoveSkill }) => {
 
     const { courseName, duration, price, description, skills, studyField: { name } } = course
 
@@ -30,7 +30,10 @@ const CourseForm = ({ onSubmit, course, skill, onChange, onAddSkill }) => {
 
                     <button type='button' className='self-end p-3 border border-s-0 border-black bg-black text-white' onClick={onAddSkill}>ajouter </button>
                 </div>
-                {skills.map((skill, i) => (<span className='text-sm' key={i}>- {skill}</span>))}
+                {skills.map((skill, i) => (<span className='text-sm flex justify-between items-center ps-4' key={i}>- {skill} <a className='text-red-500 hover:text-white border border-red-500 bg-red-100 hover:bg-red-600 px-2 py-1' href="#" onClick={(e) => {
+                    e.preventDefault()
+                    onRemoveSkill(skill)
+                }}>suprimer</a></span>))}
             </div>
 
             <div className='flex flex-col space-y-2'>
@@ -45,12 +48,12 @@ const CourseForm = ({ onSubmit, course, skill, onChange, onAddSkill }) => {
 
             <div className='flex flex-col space-y-2'>
                 <label htmlFor="description">Desciption</label>
-                <textarea name="description" id="description" value={description} onChange={onChange} className='p-3 outline-none border border-black focus:border-brightRed'></textarea>
+                <textarea name="description" id="description" value={description} onChange={onChange} rows={10} className='p-3 outline-none border border-black focus:border-brightRed'></textarea>
             </div>
 
 
             <div className="flex justify-end">
-                <button type="submit" className="p-3 px-6 pt-2 text-white bg-brightRed rounded-full baseline hover:bg-brightRedLight md:block">S'inscrire</button>
+                <button type="submit" className="p-3 px-6 pt-2 text-white bg-brightRed rounded-full baseline hover:bg-brightRedLight md:block">Confirmer</button>
             </div>
         </form>
     )

@@ -29,7 +29,7 @@ export const validate = (data) => {
         description: Joi.string().required(),
         duration: Joi.string().required(),
         studyField: Joi.string().required(),
-        skills: Joi.array().items(Joi.string()).required(),
+        skills: Joi.array().items(Joi.string().required()).required(),
         price: Joi.number().required(),
         online: Joi.boolean().default(false),
     });

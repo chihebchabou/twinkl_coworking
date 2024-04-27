@@ -5,7 +5,8 @@
   "main": "backend/server.mjs",
   "scripts": {
     "start": "node .",
-    "server": "nodemon ."
+    "server": "nodemon .",
+    "client": "pnpm run --prefix frontend dev"
   },
   "author": "chiheb chabou",
   "license": "ISC",

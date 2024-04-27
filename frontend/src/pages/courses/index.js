@@ -39,29 +39,40 @@ export const useGetCourse = (slug) => {
         studyField: { name: "" }
     });
     const dispatch = useDispatch();
-    const { currentCourse, status, message, error } = useSelector(state => state.course);
+    const { courses, currentCourse, status, message, error } = useSelector(state => state.course);
     useEffect(() => {
         console.log("CourseEdit mounted")
+
+        if (!courses) {
+            dispatch(getAllCourses());
+        }
 
         if (!currentCourse) {
             dispatch(getCourse(slug));
         }
 
 
-        if (message) {
+        if (status === 'succeeded' && message) {
             toast.success(message)
         }
 
         if (currentCourse) {
             setCourse(currentCourse)
         }
-
         const dispatchReset = async () => {
             await new Promise(resolve => setTimeout(resolve, 3000))
             dispatch(reset())
         }
         return () => dispatchReset()
+
     }, [currentCourse])
+
+    useEffect(() => {
+        if (status === 'failed' && error) {
+            toast.error(error.message)
+            dispatch(reset())
+        }
+    }, [status])
 
     return { course, setCourse, status, message, error }
 }
