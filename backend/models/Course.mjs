@@ -14,6 +14,8 @@ const courseSchema = new Schema({
     skills: { type: [String], required: true, trim: true },
     price: { type: Number, required: true, trim: true },
     online: { type: Boolean, default: false },
+}, {
+    timestamps: true
 });
 
 courseSchema.pre('save', async function (next) {

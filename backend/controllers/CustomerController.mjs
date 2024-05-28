@@ -5,12 +5,17 @@ import ResponseError from "../utils/ResponseError.mjs";
 // Container for Course Controller
 const CustomerController = {}
 
+CustomerController.index = async (req, res) => {
+    const customers = await Customer.find();
+    res.json(customers)
+}
+
 CustomerController.register = async (req, res) => {
     // Get data from request body
-    const { firstName, lastName, phone, email, course } = req.body;
+    const { firstName, lastName, phone, email, course, studyField, status } = req.body;
 
     // Validate request data
-    const { error, value } = validate({ firstName, lastName, phone, email, course });
+    const { error, value } = validate({ firstName, lastName, phone, email, course, studyField, status });
 
     // Check for errors
     if (error) {

@@ -43,6 +43,12 @@ const CourseCreate = () => {
         }
     }
 
+    const onRemoveSkill = (skill) => {
+        console.log(course.skills)
+        console.log(skill)
+        setCourse(prev => ({ ...prev, skills: prev.skills.filter(element => element !== skill) }))
+    }
+
     const onSubmit = e => {
         e.preventDefault();
         console.log({ courseName, duration, price, description, skills, studyField });
@@ -72,9 +78,9 @@ const CourseCreate = () => {
     }, [status])
 
     return (
-        <div className='flex flex-col justify-center items-center'>
-            <h1 className='mb-6 w-full pb-4 text-2xl self-start border-black border-b'>Ajouter une nouvelle formation</h1>
-            <CourseForm onSubmit={onSubmit} course={course} skill={skill} onChange={onChange} onAddSkill={onAddSkill} />
+        <div className='flex flex-col items-center justify-center'>
+            <h1 className='mb-6 w-full border-b border-gray-600 pb-4 text-center text-2xl dark:text-white'>Ajouter une nouvelle formation</h1>
+            <CourseForm onSubmit={onSubmit} course={course} skill={skill} onChange={onChange} onAddSkill={onAddSkill} onRemoveSkill={onRemoveSkill} />
         </div>
     )
 }

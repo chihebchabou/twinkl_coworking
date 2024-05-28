@@ -3,12 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { login, profile, reset } from "../../features/admin/adminSlice";
 import { useEffect, useRef } from "react";
 import { toast } from "react-toastify";
+import { Flowbite, useThemeMode } from "flowbite-react";
 
 const Login = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const { data, status, error } = useSelector(state => state.admin);
+    const { mode, setMode } = useThemeMode()
 
     const onFormSubmitted = (e) => {
         e.preventDefault();
@@ -17,6 +19,7 @@ const Login = () => {
     }
 
     useEffect(() => {
+        setMode("auto")
         if (!data && status === "idle") {
             const request = async () => {
                 // await new Promise(resolve => setTimeout(resolve, 5000))
@@ -45,25 +48,27 @@ const Login = () => {
 
 
     return status === "failed" && (
-        <main className='flex flex-col h-screen w-full justify-center items-center px-4'>
-            <form onSubmit={onFormSubmitted} className='border border-gray-600 rounded-md w-[500px] lg:w-[400px]'>
-                <h1 className='text-center p-5 bg-sky-700 text-white'>Administration</h1>
-                <div className='p-5 space-y-3'>
-                    <div className='flex flex-col space-y-2'>
-                        <label htmlFor="email">E-mail</label>
-                        <input type="email" name="email" id="email" required className='p-2 outline-none rounded-md border border-black focus:border-sky-500' />
-                    </div>
+        <Flowbite>
+            <main className='flex flex-col h-screen w-full justify-center items-center px-4 dark:bg-[#111827] dark:text-gray-400'>
+                <form onSubmit={onFormSubmitted} className='border border-gray-600 dark:bg-[#0b0f18] rounded-md w-[500px] lg:w-[400px]'>
+                    <h1 className='text-center p-5 bg-sky-700 text-white'>Administration</h1>
+                    <div className='p-5 space-y-3'>
+                        <div className='flex flex-col space-y-2'>
+                            <label htmlFor="email">E-mail</label>
+                            <input type="email" name="email" id="email" required className='p-2 outline-none rounded-md border border-black focus:border-sky-500 dark:bg-gray-700' />
+                        </div>
 
-                    <div className='flex flex-col space-y-2'>
-                        <label htmlFor="password">Password</label>
-                        <input type="password" name="password" id="password" required className='p-2 outline-none rounded-md border border-black focus:border-sky-500' />
+                        <div className='flex flex-col space-y-2'>
+                            <label htmlFor="password">Password</label>
+                            <input type="password" name="password" id="password" required className='p-2 outline-none rounded-md border border-black focus:border-sky-500 dark:bg-gray-700' />
+                        </div>
+                        <div className='flex justify-end'>
+                            <button className="bg-sky-900 hover:bg-sky-500 block text-white px-4 py-2 rounded-md">Login {status == "pending" && "..."}</button>
+                        </div>
                     </div>
-                    <div className='flex justify-end'>
-                        <button className="bg-sky-900 hover:bg-sky-500 block text-white px-4 py-2 rounded-md">Login {status == "pending" && "..."}</button>
-                    </div>
-                </div>
-            </form>
-        </main>
+                </form>
+            </main>
+        </Flowbite>
     )
 }
 

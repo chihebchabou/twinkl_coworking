@@ -1,43 +1,42 @@
-import { useState } from "react"
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import logo from '../assets/logo.png'
 
 const Navbar = () => {
-    const [isOpen, setIsOpen] = useState(false)
-    return (
-        <nav className="relative container mx-auto p-6">
-            {/* Flex container */}
-            <div className="flex items-center justify-between">
-                {/* Logo */}
-                <div className="pt-2 text-2xl">
-                    <img className='w-20 rounded-full' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzXa2nDnEvDX38UwW8xvmzh7-5GMYS5c0iUCBulvv2Lcx5XRQ3PYdthgJDzWUsOD-zbpY&usqp=CAU" alt="" />
-                </div>
-                {/* Menu Items */}
-                <div className="hidden md:flex space-x-9">
-                    <Link to="/" className='hover:text-darkGrayishBlue'>Acceuil</Link>
-                    <Link to="/courses" className='hover:text-darkGrayishBlue'>Nos formations</Link>
-                    <Link to="/about" className='hover:text-darkGrayishBlue'>Découvrir Twinkl</Link>
-                </div>
-                {/* Button */}
-                {/* <a href="#" className="hidden p-3 px-6 pt-2 text-white bg-brightRed rounded-full baseline hover:bg-brightRedLight md:block ">Rejoins-nous</a> */}
+    const [nav, setNav] = useState(true);
 
-                {/* Hamburger Icon */}
-                <button id="menu-btn" onClick={() => { setIsOpen(!isOpen) }} className={`${isOpen && 'open'} block hamburger md:hidden focus:outline-none`}>
-                    <span className="hamburger-top"></span>
-                    <span className="hamburger-middle"></span>
-                    <span className="hamburger-bottom"></span>
-                </button>
-            </div>
+    const handleNav = () => setNav(!nav)
+    
+  return (
+    <div className="flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white">
+        <h1 className="flex w-full text-3xl font-bold uppercase text-deepSkyBlue" >
+            Twinkl.
+        </h1>
+        <ul className="hidden md:flex">
+            <li className="p-4">Home</li>
+            <li className="p-4">Company</li>
+            <li className="p-4">Resources</li>
+            <li className="p-4">About</li>
+            <li className="p-4">Contact</li>
+        </ul>
 
-            {/* Mobile Menu */}
-            <div className="md:hidden">
-                <div id="menu" className={`absolute ${isOpen ? 'flex' : 'hidden'} flex-col items-center  self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md`}>
-                    <Link to="/" className='hover:text-darkGrayishBlue'>Acceuil</Link>
-                    <Link to="/courses" className='hover:text-darkGrayishBlue'>Nos formations</Link>
-                    <Link to="/about" className='hover:text-darkGrayishBlue'>Découvrir Twinkl</Link>
-                </div>
-            </div>
-        </nav>
-    )
+        <div onClick={handleNav} className="block md:hidden">
+            {!nav ? <AiOutlineClose size={20}/> : <AiOutlineMenu size={20} />}
+        </div>
+
+        <div className={`block md:hidden ${!nav ? "fixed left-0 top-0 w-[60%] h-full border-r border-r-gray-900 bg-[#000300] ease-in-out duration-500" : "fixed left-[-100%] top-0 w-[60%] h-full border-r border-r-gray-900 bg-[#000300] ease-in-out duration-500"}`}>
+            <h1 className="w-full text-3xl font-bold uppercase text-deepSkyBlue m-4" >Twinkl.</h1>
+            <ul className="uppercase">
+                <li className="p-4 border-b border-gray-600">Home</li>
+                <li className="p-4 border-b border-gray-600">Company</li>
+                <li className="p-4 border-b border-gray-600">Resources</li>
+                <li className="p-4 border-b border-gray-600">About</li>
+                <li className="p-4">Contact</li>
+            </ul>
+        </div>
+        
+    </div>
+  )
 }
 
 export default Navbar

@@ -51,7 +51,8 @@ const CourseEdit = () => {
 
     return (
         <div className='flex flex-col justify-center items-center'>
-            <h1 className='mb-6 w-full pb-4 text-2xl self-start border-black border-b'>Editer une formation</h1>
+            <h1 className='mb-6 w-full pb-4 text-2xl text-center border-gray-600 border-b dark:text-white'>Editer une formation</h1>
+
             <CourseForm onSubmit={onSubmit} course={course} skill={skill} onChange={onChange} onAddSkill={onAddSkill} onRemoveSkill={onRemoveSkill} />
         </div>
     )

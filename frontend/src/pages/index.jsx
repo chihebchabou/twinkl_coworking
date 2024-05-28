@@ -1,12 +1,16 @@
-import Navbar from '../components/Navbar'
+
+import logo from '../assets/logo.png'
+
 import { Outlet } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 const Main = () => {
     return (
         <>
-            {/* Navbar */}
-            <Navbar />
-            <Outlet />
+            <Navbar/>
+            <main>
+                <Outlet />
+            </main>
         </>
     )
 }

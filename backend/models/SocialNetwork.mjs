@@ -6,7 +6,9 @@ export const socialNetworkSchema = new Schema({
     user: { type: Schema.Types.ObjectId, ref: 'User' },
     socialNetwork: { type: String, required: true, trim: true },
     socialNetworkURI: { type: String, required: true, trim: true },
-});
+}, {
+    timestamps: true
+  });
 
 export const validate = (data) => {
     const schema = Joi.object({

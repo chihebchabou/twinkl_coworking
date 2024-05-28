@@ -14,7 +14,9 @@ const userSchema = new Schema({
     address: { type: String, required: true, trim: true },
     socialNetwork: { type: [socialNetworkSchema], trim: true, default: [] },
     password: { type: String, required: true, min: 8, trim: true }
-});
+}, {
+    timestamps: true
+  });
 
 userSchema.methods.login = function (res) {
     const token = jwt.sign({ userId: this._id }, process.env.JWT_SECRET, {
