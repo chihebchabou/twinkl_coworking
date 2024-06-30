@@ -16,7 +16,7 @@ const Cards = () => {
                     <p className='py-2 border-b mx-8 mt-8'>1 Granted User</p>
                     <p className='py-2 border-b mx-8 mt-8'>Send up to 2GB</p>
                 </div>
-                <button className="bg-deepSkyBlue w-[200px] rounded-md font-medium my-6 mx-auto py-3 text-black text-center hover:bg-plum hover:text-black">Start Trial</button>
+                <button className="bg-deepSkyBlue w-[200px] rounded-md font-medium my-6 mx-auto py-3 text-black text-center hover:bg-plum hover:text-black duration-300">Start Trial</button>
             </div>
             {/* Card */}
             <div className="w-full bg-gray-100 border shadow-xl flex flex-col p-4 md:my-0 my-8 rounded-lg hover:scale-105 duration-300">
@@ -28,7 +28,7 @@ const Cards = () => {
                     <p className='py-2 border-b mx-8 mt-8'>1 Granted User</p>
                     <p className='py-2 border-b mx-8 mt-8'>Send up to 2GB</p>
                 </div>
-                <button className="bg-black w-[200px] rounded-md font-medium my-6 mx-auto py-3 text-deepSkyBlue text-center hover:bg-plum hover:text-black">Start Trial</button>
+                <button className="bg-black w-[200px] rounded-md font-medium my-6 mx-auto py-3 text-deepSkyBlue text-center hover:bg-plum hover:text-black duration-300">Start Trial</button>
             </div>
             {/* Card */}
             <div className="w-full border shadow-xl flex flex-col p-4 my-4 rounded-lg hover:scale-105 duration-300">
@@ -40,7 +40,7 @@ const Cards = () => {
                     <p className='py-2 border-b mx-8 mt-8'>1 Granted User</p>
                     <p className='py-2 border-b mx-8 mt-8'>Send up to 2GB</p>
                 </div>
-                <button className="bg-deepSkyBlue w-[200px] rounded-md font-medium my-6 mx-auto py-3 text-black text-center hover:bg-plum hover:text-black">Start Trial</button>
+                <button className="bg-deepSkyBlue w-[200px] rounded-md font-medium my-6 mx-auto py-3 text-black text-center hover:bg-plum hover:text-black duration-300">Start Trial</button>
             </div>
         </div>
     </div>

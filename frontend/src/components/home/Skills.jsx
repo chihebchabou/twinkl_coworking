@@ -8,7 +8,7 @@ const Skills = () => {
                 <p className='uppercase text-plum font-bold'>Booste tes compétences en Tech</p>
                 <h1 className='md:text-4xl sm:text-3xl text-2xl py-2'>Travaillez sur des projets professionnalisants</h1>
                 <p>Réalisez des projets concrets, issus de scénarios métiers, directement applicables en entreprise.</p>
-                <a href="#!" className="bg-black w-[200px] rounded-md font-medium my-6 mx-auto md:mx-0 py-3 text-deepSkyBlue text-center hover:bg-plum hover:text-black">Rejoins-nous</a>
+                <a href="#!" className="bg-black w-[200px] rounded-md font-medium my-6 mx-auto md:mx-0 py-3 text-deepSkyBlue text-center hover:bg-plum hover:text-black duration-300">Rejoins-nous</a>
             </div>
         </div>
     </div>

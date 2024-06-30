@@ -1,6 +1,3 @@
-
-import logo from '../assets/logo.png'
-
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
 

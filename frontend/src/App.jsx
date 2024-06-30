@@ -14,6 +14,7 @@ import CustomerList from './pages/customers/CustomerList';
 import CourseCreate from './pages/courses/CourseCreate';
 import CourseEdit from './pages/courses/CourseEdit';
 import Dashboard from './pages/admin/Dashboard';
+import NotFoundPage from './pages/NotFoundPage';
 
 
 const App = () => {
@@ -45,6 +46,9 @@ const App = () => {
           </Route>
           <Route path='login' element={<Login />} />
         </Route>
+
+        {/* Not Found Page */}
+        <Route path='*' element={<NotFoundPage />} />
       </Routes>
       <ToastContainer />
     </Router>

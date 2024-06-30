@@ -9,7 +9,7 @@ const Newsletter = () => {
             <div className="my-4">
                 <div className="flex flex-col sm:flex-row items-center justify-between w-full">
                     <input className="p-3 flex w-full rounded-md text-black" type="email" name="" id="" placeholder="Enter Email" />
-                    <button className="bg-deepSkyBlue w-[200px] rounded-md font-medium ml-4 my-6 mx-auto px-6 py-3 text-black hover:bg-plum">Notify Me</button>
+                    <button className="bg-deepSkyBlue w-[200px] rounded-md font-medium ml-4 my-6 mx-auto px-6 py-3 text-black hover:bg-plum duration-300">Notify Me</button>
                 </div>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <span className="text-plum">Debitis, modi?</span></p>
             </div>
