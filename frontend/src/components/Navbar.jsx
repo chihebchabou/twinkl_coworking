@@ -15,7 +15,7 @@ const Navbar = () => {
         </h1>
         <ul className="hidden md:flex">
             <li className="p-4"><Link to='/courses'>Nos Formations</Link></li>
-            <li className="p-4"><a href="#">Découvrir TWINKL</a></li>
+            <li className="p-4"><Link to='/about'>Découvrir TWINKL</Link></li>
             <li className="p-4"><a href="#">Resources</a></li>
 
         </ul>

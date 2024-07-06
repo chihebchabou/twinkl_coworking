@@ -15,6 +15,7 @@ import CourseCreate from './pages/courses/CourseCreate';
 import CourseEdit from './pages/courses/CourseEdit';
 import Dashboard from './pages/admin/Dashboard';
 import NotFoundPage from './pages/NotFoundPage';
+import About from './pages/About';
 
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
         {/* Main */}
         <Route path='/' element={<Main />}>
           <Route index element={<Home />} />
+          <Route path='about' element={<About />} />
           <Route path='courses'>
             <Route index element={<Courses />} />
             <Route path=':slug' element={<CourseDetail />} />
