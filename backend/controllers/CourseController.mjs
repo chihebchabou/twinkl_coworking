@@ -17,10 +17,10 @@ CourseController.index = async (req, res) => {
 // @route POST /api/courses
 CourseController.store = async (req, res) => {
     // Get data from request body
-    const { courseName, description, duration, studyField, skills, price } = req.body;
+    const { courseName, description, duration, studyField, skills, price, content } = req.body;
 
     // Validate request data
-    const { error, value } = validate({ courseName, description, duration, studyField, skills, price });
+    const { error, value } = validate({ courseName, description, duration, studyField, skills, price, content });
 
     // Check for errors
     if (error) {
@@ -79,10 +79,10 @@ CourseController.update = async (req, res) => {
     const userId = req.user.id;
 
     // Get data from request body
-    const { courseName, description, duration, studyField, skills, price } = req.body;
+    const { courseName, description, duration, studyField, skills, price, content } = req.body;
 
     // Validate request data
-    const { error, value } = validate({ courseName, description, duration, studyField, skills, price });
+    const { error, value } = validate({ courseName, description, duration, studyField, skills, price, content });
 
     console.log(value)
 
@@ -97,7 +97,7 @@ CourseController.update = async (req, res) => {
     if (!user)
         throw new ResponseError(404, 'User not found');
 
-    const updatedCourse = await Course.findOneAndUpdate({ slug, user: userId }, { courseName: value.courseName, description: value.description, duration: value.duration, skills: value.skills, price: value.price }, { new: true });
+    const updatedCourse = await Course.findOneAndUpdate({ slug, user: userId }, { courseName: value.courseName, description: value.description, duration: value.duration, skills: value.skills, content: value.content, price: value.price }, { new: true });
 
     // const updatedCourse = await Course.findOne({ slug, user: userId })
 
@@ -106,7 +106,11 @@ CourseController.update = async (req, res) => {
 
     // Make sure that slug field and studyField are updated
     updatedCourse.studyField.name = value.studyField;
+
+    await StudyField.findByIdAndUpdate(updatedCourse.studyField.id, {name: value.studyField});
+
     await updatedCourse.save();
+
 
     console.log(updatedCourse)
 

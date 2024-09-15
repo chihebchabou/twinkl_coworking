@@ -18,7 +18,6 @@ const Navbar = () => {
         <ul className="hidden md:flex">
             <li className="p-4"><Link to='/courses'>Nos Formations</Link></li>
             <li className="p-4"><Link to='/about'>Découvrir TWINKL</Link></li>
-            <li className="p-4"><a href="#">Resources</a></li>
 
         </ul>
 
@@ -31,7 +30,6 @@ const Navbar = () => {
             <ul className="uppercase">
                 <li className="p-4 border-b border-gray-600"><Link to='/courses'>Nos Formations</Link></li>
                 <li className="p-4 border-b border-gray-600"><Link to='/about'>Découvrir TWINKL</Link></li>
-                <li className="p-4 border-b border-gray-600">Resources</li>
                 
                 
             </ul>

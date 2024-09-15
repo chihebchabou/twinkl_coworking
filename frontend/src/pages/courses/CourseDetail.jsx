@@ -5,7 +5,7 @@ import socialMedia from "@/assets/social-media.jpg"
 
 const CourseDetail = () => {
     const data = useLoaderData();
-    console.log(data)
+    console.dir(data)
     const {courseName,description,content=[], skills} = data
     return ( 
         <>

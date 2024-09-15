@@ -8,7 +8,7 @@ const customerSchema = new Schema({
   phone: { type: String, required: true, trim: true },
   email: { type: String, required: true, trim: true },
   course: { type: String, required: true, trim: true },
-  studyField: { type: String, required: true, trim: true },
+  // studyField: { type: String, required: true, trim: true },
   status: { type: String, enum: ["pending", "active"], default: "pending", trim: true },
 }, {
   timestamps: true
@@ -21,7 +21,7 @@ export const validate = (data) => {
     phone: Joi.string().length(8).required(),
     email: Joi.string().email().required(),
     course: Joi.string().required(),
-    studyField: Joi.string().required(),
+    // studyField: Joi.string().required(),
     status: Joi.string().default("pending"),
   });
   return schema.validate(data, { abortEarly: false });

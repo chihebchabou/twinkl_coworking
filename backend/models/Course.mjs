@@ -12,6 +12,7 @@ const courseSchema = new Schema({
     duration: { type: String, required: true, trim: true },
     studyField: { type: studyFieldSchema, required: true, trim: true },
     skills: { type: [String], required: true, trim: true },
+    content: { type: [String], required: true, trim: true },
     price: { type: Number, required: true, trim: true },
     online: { type: Boolean, default: false },
 }, {
@@ -27,11 +28,12 @@ courseSchema.pre('save', async function (next) {
 
 export const validate = (data) => {
     const schema = Joi.object({
-        courseName: Joi.string().required(),
-        description: Joi.string().required(),
+        courseName: Joi.string().required().messages({'string.empty': `"courseName" ne doit pas être vide`}),
+        description: Joi.string().required().messages({'string.empty': `"description" ne doit pas être vide`}),
         duration: Joi.string().required(),
         studyField: Joi.string().required(),
         skills: Joi.array().items(Joi.string().required()).required(),
+        content: Joi.array().items(Joi.string().required()).required(),
         price: Joi.number().required(),
         online: Joi.boolean().default(false),
     });

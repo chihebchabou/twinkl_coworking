@@ -9,7 +9,7 @@ const Hero = () => {
           <ReactTyped className="md:text-5xl sm:text-2xl text-xl text-gold font-bold md:pl-4 pl-2" strings={['COWORKING', 'CLUBS', 'FORMATION']} typeSpeed={120} backSpeed={140} loop />
         </div>
         <p className="md:text-2xl text-xl font-bold text-gray-500">Des compétences d&apos;aujourd’hui qui ont de l&apos;avenir</p>
-        <a href="#!" className="bg-deepSkyBlue w-[200px] rounded-md font-medium my-6 mx-auto py-3 text-black hover:bg-plum duration-300">Rejoins-nous</a>
+        <a href="/register" className="bg-deepSkyBlue w-[200px] rounded-md font-medium my-6 mx-auto py-3 text-black hover:bg-plum duration-300">Rejoins-nous</a>
     </div>
   )
 }

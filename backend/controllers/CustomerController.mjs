@@ -12,10 +12,10 @@ CustomerController.index = async (req, res) => {
 
 CustomerController.register = async (req, res) => {
     // Get data from request body
-    const { firstName, lastName, phone, email, course, studyField, status } = req.body;
+    const { firstName, lastName, phone, email, course, status } = req.body;
 
     // Validate request data
-    const { error, value } = validate({ firstName, lastName, phone, email, course, studyField, status });
+    const { error, value } = validate({ firstName, lastName, phone, email, course, status });
 
     // Check for errors
     if (error) {
@@ -34,7 +34,8 @@ CustomerController.register = async (req, res) => {
     // Return successful response
     res.status(201).json({
         message: 'Customer Registered successfully',
-        customer
+        customer,
+        status: 201
     });
 }
 
