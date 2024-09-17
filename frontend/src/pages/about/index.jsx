@@ -47,7 +47,7 @@ const About = () => {
       </section>
       <section className="w-full border-t py-10 bg-white px-4">
         <h1 className="text-center md:text-4xl sm:text-3xl text-2xl mb-8">
-            Témoignage
+          Témoignage
         </h1>
         <div className="grid max-w-[1240px] mx-auto md:grid-cols-2">
           <figure className="mb-7 md:w-2/3 md:mx-auto">
@@ -64,11 +64,17 @@ const About = () => {
             </svg>
             <blockquote>
               <p className="text-2xl font-medium text-center text-gray-900">
-                &quot;Flowbite is just awesome. It contains tons of predesigned
-                components and pages starting from login screen to complex
-                dashboard. Perfect choice for your next SaaS application.&quot;
+                &quot;Un grand merci à @ahlem.bensaad.54 pour son précieux
+                témoignage et pour avoir partagé son expérience durant note
+                atelier #PhonePhotography avec @rihem.b.s ! Nous sommes ravis de
+                savoir que sa participation a été bénéfique.&quot;
               </p>
             </blockquote>
+            <video width="390" height="240" controls>
+              <source src="media/@ahlem.bensaad.5.mp4" type="video/mp4" />
+              <source src="movie.ogg" type="video/ogg" />
+            </video>
+
             <figcaption className="flex items-center justify-center mt-6 space-x-3">
               {/* <img
                 className="w-6 h-6 rounded-full"
@@ -100,9 +106,10 @@ const About = () => {
             </svg>
             <blockquote>
               <p className="text-2xl font-medium text-center text-gray-900">
-                &quot;Flowbite is just awesome. It contains tons of predesigned
-                components and pages starting from login screen to complex
-                dashboard. Perfect choice for your next SaaS application.&quot;
+                &quot;Un grand merci à Fatma pour son partage d’expériance et à
+                @nadia_magh pour sa patience, son guidage passionné, et ses
+                astuces professionnelles. Ta générosité et ton savoir-faire nous
+                ont illuminés ! Vous êtes passionné(e)&quot;
               </p>
             </blockquote>
             <figcaption className="flex items-center justify-center mt-6 space-x-3">

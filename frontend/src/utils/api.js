@@ -16,7 +16,7 @@ async function responseCheck(response) {
 
 // Course services
 export async function getAllCourses() {
-  // await sleep(1000)
+  // await sleep(1000);
   const response = await fetch(API_URLS.courses);
   return await responseCheck(response);
 }
@@ -80,6 +80,10 @@ export async function userProfile() {
 }
 
 // Customer serives
+export async function getAllCustomers() {
+  const response = await fetch(API_URLS.customers);
+    return await responseCheck(response);
+}
 export async function customerRegister(data) {
     const response = await fetch(API_URLS.customers + "register", {
         method: "POST",

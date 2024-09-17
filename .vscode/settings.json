@@ -1,4 +1,5 @@
 {
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": null
+  "editor.defaultFormatter": null,
+  "workbench.colorTheme": "Default Dark+"
 }

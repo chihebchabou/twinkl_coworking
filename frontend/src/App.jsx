@@ -31,6 +31,7 @@ import CourseEdit, {
 } from "./pages/courses/CourseEdit";
 import AlertState from "./context/alert/AlertState";
 import AlertComponent from "./components/AlertComponent";
+import CustomersList, {loader as CustomersLoader} from "./pages/admin/CusomersList";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -71,6 +72,7 @@ const router = createBrowserRouter(
               action={editCourseAction}
             />
           </Route>
+          <Route path="customers" element={<CustomersList/>} loader={CustomersLoader} />
         </Route>
         <Route path="login" element={<Login />} action={loginAction} />
       </Route>
