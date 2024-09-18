@@ -4,8 +4,6 @@ import { Form, useActionData, useLoaderData } from "react-router-dom";
 const Register = () => {
   const data = useLoaderData();
   const submittedData = useActionData();
-  console.log(data);
-  console.log(submittedData);
   return (
     <div className="pt-[90px] px-10 md:px-0 w-full min-h-screen flex flex-col justify-center items-center  text-black bg-white">
       <p className="uppercase md:text-4xl sm:text-3xl text-2xl text-plum font-bold my-5">
@@ -91,7 +89,7 @@ const Register = () => {
           />
         </div>
         <div className="mb-5">
-          <label htmlFor="email" className="block mb-3">
+          <label htmlFor="course" className="block mb-3">
             Choisis la formation qui t&apos;intéresse
           </label>
           <select

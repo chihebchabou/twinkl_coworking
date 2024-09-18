@@ -1,4 +1,8 @@
+import VideoComponent from '@/components/VideoComponent';
+import { useState } from 'react';
+
 const About = () => {
+  const [showVideo, setShowVideo] = useState({ src: '', isOpen: false });
   return (
     <>
       <section className="w-full bg-white py-[100px] px-4 min-h-screen">
@@ -37,7 +41,7 @@ const About = () => {
               compétences nécessaires pour bien démarrer et gérer votre projet.
             </p>
             <a
-              href="#!"
+              href="/register"
               className="bg-black w-[200px] rounded-md font-medium my-6 mx-auto md:mx-0 py-3 text-deepSkyBlue text-center hover:bg-plum hover:text-black duration-300"
             >
               Rejoins-nous
@@ -63,30 +67,29 @@ const About = () => {
               />
             </svg>
             <blockquote>
-              <p className="text-2xl font-medium text-center text-gray-900">
+              <p className="text-xl font-medium text-center text-gray-900">
                 &quot;Un grand merci à @ahlem.bensaad.54 pour son précieux
                 témoignage et pour avoir partagé son expérience durant note
                 atelier #PhonePhotography avec @rihem.b.s ! Nous sommes ravis de
                 savoir que sa participation a été bénéfique.&quot;
               </p>
             </blockquote>
-            <video width="390" height="240" controls>
-              <source src="media/@ahlem.bensaad.5.mp4" type="video/mp4" />
-              <source src="movie.ogg" type="video/ogg" />
-            </video>
 
             <figcaption className="flex items-center justify-center mt-6 space-x-3">
-              {/* <img
-                className="w-6 h-6 rounded-full"
-                src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png"
-                alt="profile picture"
-              /> */}
               <div className="flex items-center divide-x-2 divide-gray-500 dark:divide-gray-700">
                 <div className="pr-3 font-medium text-gray-900">
                   Mme Ahlem Ben Saad
                 </div>
-                <div className="pl-3 text-sm font-light text-gray-500">
-                  CEO at Google
+                <div
+                  onClick={() =>
+                    setShowVideo({
+                      src: 'media/@ahlem.bensaad.5.mp4',
+                      isOpen: true,
+                    })
+                  }
+                  className="pl-3 text-sm font-light text-gray-500 cursor-pointer hover:text-deepSkyBlue"
+                >
+                  voir la video
                 </div>
               </div>
             </figcaption>
@@ -105,7 +108,7 @@ const About = () => {
               />
             </svg>
             <blockquote>
-              <p className="text-2xl font-medium text-center text-gray-900">
+              <p className="text-xl font-medium text-center text-gray-900">
                 &quot;Un grand merci à Fatma pour son partage d’expériance et à
                 @nadia_magh pour sa patience, son guidage passionné, et ses
                 astuces professionnelles. Ta générosité et ton savoir-faire nous
@@ -122,14 +125,20 @@ const About = () => {
                 <div className="pr-3 font-medium text-gray-900">
                   Mme Fatma Khelif
                 </div>
-                <div className="pl-3 text-sm font-light text-gray-500">
-                  CEO at Google
+                <div
+                  onClick={() =>
+                    setShowVideo({ src: 'media/fatma.mp4', isOpen: true })
+                  }
+                  className="pl-3 text-sm font-light text-gray-500 cursor-pointer hover:text-deepSkyBlue"
+                >
+                  voir la video
                 </div>
               </div>
             </figcaption>
           </figure>
         </div>
       </section>
+      <VideoComponent showVideo={showVideo} setShowVideo={setShowVideo} />
     </>
   );
 };

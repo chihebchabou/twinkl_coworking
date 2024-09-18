@@ -1,20 +1,29 @@
-import { FaDribbbleSquare, FaFacebookSquare, FaGithubSquare, FaInstagram, FaTwitterSquare } from "react-icons/fa";
+import {
+  FaDribbbleSquare,
+  FaFacebookSquare,
+  FaGithubSquare,
+  FaInstagram,
+  FaTwitterSquare,
+} from 'react-icons/fa';
+import logo from '@/assets/logo.png';
 
 const Footer = () => {
   return (
-    <div className="max-w-[1240px] mx-auto py-16 px-4 grid lg:grid-cols-3 gap-8 text-gray-300">
-        <div>
-            <h1 className="w-full text-3xl font-bold text-deepSkyBlue uppercase">Twinkl.</h1>
-            <p className="py-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere dolor sit culpa corrupti nobis eius.</p>
+    <div className="max-w-[1240px] mx-auto py-16 px-4 grid items-center lg:grid-cols-3 gap-8 text-gray-300">
+      <div>
+        <h1 className="w-full text-3xl font-bold text-deepSkyBlue uppercase">
+          <img src={logo} alt="" className="w-52" />
+        </h1>
+        {/* <p className="py-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere dolor sit culpa corrupti nobis eius.</p>
             <div className="flex justify-between md:w-[75%] my-6">
                 <FaFacebookSquare size={30} />
                 <FaInstagram size={30}  />
                 <FaTwitterSquare size={30}  />
                 <FaGithubSquare size={30}  />
                 <FaDribbbleSquare size={30}  />
-            </div>
-        </div>
-        <div className="lg:col-span-2 flex justify-between mt-6">
+            </div> */}
+      </div>
+      {/* <div className="lg:col-span-2 flex justify-between mt-6">
           <div>
             <h6 className="font-medium text-gray-400">Solutions</h6>
             <ul>
@@ -51,9 +60,26 @@ const Footer = () => {
               <li className="py-2 text-sm">Terms</li>
             </ul>
           </div>
-        </div>
+        </div> */}
+      <div className="lg:col-span-2 flex flex-col mt-6">
+        {/* <div> */}
+          <p className="pb-4">
+          <strong>Adresse :</strong> Rue Fadhel Ben Achour, Ariana 1004
+          </p>
+          <p className="pb-4">
+          <strong>Téléphone :</strong> 20 222 226
+          </p>
+          <div className="flex md:w-[75%] my-6 space-x-5">
+            <a href="https://www.facebook.com/Twinklspace/" target='_blank'><FaFacebookSquare size={30} className='hover:text-yellowGreen' /></a>
+            <a href="https://www.instagram.com/twinkl_coworking/" target='_blank'><FaInstagram size={30} className='hover:text-yellowGreen' /></a>
+            {/* <FaTwitterSquare size={30} /> */}
+            {/* <FaGithubSquare size={30} /> */}
+            {/* <FaDribbbleSquare size={30} /> */}
+          </div>
+        {/* </div> */}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
