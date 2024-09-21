@@ -10,6 +10,7 @@ import errorMiddleware from './middleware/errorMiddleware.mjs';
 import customerRouter from './routes/customerRoute.mjs';
 import socialNetworkRouter from './routes/socialNetworkRoute.mjs';
 import studyFieldRouter from './routes/studyFieldRoute.mjs';
+import path from 'node:path'
 
 // Run dotenv config
 dotenv.config();
@@ -35,6 +36,13 @@ app.use('/api/customers', customerRouter);
 app.use('/api/courses', courseRouter);
 app.use('/api/social-networks', socialNetworkRouter);
 app.use('/api/study-fields', studyFieldRouter);
+
+
+if (process.env.NODE_ENV === "production") {
+    const __dirname = path.resolve();
+    app.use(express.static(path.join(__dirname, '/frontend/dist')));
+    app.get('*', (req,res) => res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html')));
+}
 
 // Error Middlewares use
 app.use(errorMiddleware.notFound);
