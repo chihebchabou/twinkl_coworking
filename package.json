@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node .",
     "server": "nodemon .",
-    "client": "pnpm run --prefix frontend dev"
+    "client": "pnpm run --prefix frontend dev",
+    "build": "npm install --prefix ./frontend && npm run build --prefix ./frontend && npm install"
   },
   "author": "chiheb chabou",
   "license": "ISC",
