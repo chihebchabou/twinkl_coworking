@@ -12,7 +12,7 @@ const Login = () => {
     <Flowbite>
       <main className="flex flex-col h-screen w-full justify-center items-center px-4 bg-[#e7e8e9] dark:bg-[#111827] dark:text-gray-400">
         <Form
-          className="border border-gray-600 dark:bg-[#0b0f18] rounded-md w-[500px] lg:w-[400px]"
+          className="border border-gray-600 dark:bg-[#0b0f18] rounded-md w-[300px] sm:w-[500px] lg:w-[400px]"
           method="post"
           action="/admin/login"
         >
