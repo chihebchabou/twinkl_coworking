@@ -16,7 +16,7 @@ import CourseCreate, {
 } from "./pages/courses/CourseCreate";
 import ErrorPage from "./pages/ErrorPage";
 import About from "./pages/about";
-import Admin from "./pages/admin";
+import Admin, {action as updateUserAction} from "./pages/admin";
 import Login, { action as loginAction } from "./pages/admin/Login";
 import ErrorAdminPage from "./pages/ErrorAdminPage";
 import AdminLayout, {
@@ -55,7 +55,7 @@ const router = createBrowserRouter(
         />
       </Route>
       {/* Admin */}
-      <Route path="/admin" errorElement={<ErrorAdminPage />}>
+      <Route path="/admin" errorElement={<ErrorAdminPage />}  action={updateUserAction}>
         <Route path="" element={<AdminLayout />} loader={profileLoader}>
           <Route index element={<Admin />} />
           <Route path="courses" element={<CourseLayout />}>

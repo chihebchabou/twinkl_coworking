@@ -1,11 +1,14 @@
 import SidebarComponent from "@/components/SidebarComponent";
 import { userProfile } from "@/utils/api";
 import { DarkThemeToggle, Flowbite } from "flowbite-react";
+import { useActionData } from "react-router-dom";
 import { useLoaderData } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 
 const AdminLayout = () => {
   const data = useLoaderData();
+  const actionData = useActionData();
+  console.log("actionData", actionData);
   console.log(data);
   return (
     <Flowbite>

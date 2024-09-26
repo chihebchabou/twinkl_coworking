@@ -79,6 +79,17 @@ export async function userProfile() {
   return await responseCheck(response);
 }
 
+export async function updateUserProfile(data) {
+  const response = await fetch(API_URLS.users + "profile", {
+    method: "PUT",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  return await responseCheck(response);
+}
+
 // Customer serives
 export async function getAllCustomers() {
   const response = await fetch(API_URLS.customers);
