@@ -2,13 +2,13 @@
 import { Link } from "react-router-dom";
 
 const CourseCard = (props) => {
-  const { courseName, studyField, description, slug, admin } = props;
+  const { courseName, studyField, description, slug, admin, image } = props;
   return (
     <div className="flex flex-col justify-between border-2 border-gold p-6 rounded-xl bg-white">
       <div className="mb-4">
         <img
           className="mx-auto rounded-full mb-6"
-          src="https://gomycode.com/tn/wp-content/uploads/sites/26/2023/02/fullstack-js-bootcamp-1-scaled-480x304.jpg"
+          src={image}
           alt=""
         />
         <h1 className="sm:text-xl font-semibold text-plum">

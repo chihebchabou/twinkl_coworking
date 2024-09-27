@@ -43,7 +43,7 @@ export const validate = (data, update = false) => {
     firstName: Joi.string().required(),
     lastName: Joi.string().required(),
     // phone: Joi.string().pattern(/^(\+\d{1,2}\s)?\(?\d{2}\)?[\s.-]\d{3}[\s.-]\d{3}$/).required(),
-    phone: Joi.string().required(),
+    phone: Joi.string().pattern(/^\d{8}$/).required(),
     email: Joi.string().email().required(),
     address: Joi.string().required(),
     facebook: Joi.string().uri().required(),

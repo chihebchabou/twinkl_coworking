@@ -1,15 +1,23 @@
 import SidebarComponent from "@/components/SidebarComponent";
 import { userProfile } from "@/utils/api";
 import { DarkThemeToggle, Flowbite } from "flowbite-react";
-import { useActionData } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useLoaderData } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 
 const AdminLayout = () => {
   const data = useLoaderData();
-  const actionData = useActionData();
-  console.log("actionData", actionData);
-  console.log(data);
+  
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === '/admin' || location.pathname === '/admin/') navigate('/admin/dashboard')
+  }, [])
+ 
+  
   return (
     <Flowbite>
             <div className="bg-[#e7e8e9] dark:bg-[#111827] min-h-screen">

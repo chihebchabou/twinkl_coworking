@@ -55,9 +55,9 @@ const router = createBrowserRouter(
         />
       </Route>
       {/* Admin */}
-      <Route path="/admin" errorElement={<ErrorAdminPage />}  action={updateUserAction}>
+      <Route path="/admin" errorElement={<ErrorAdminPage />} action={updateUserAction}>
         <Route path="" element={<AdminLayout />} loader={profileLoader}>
-          <Route index element={<Admin />} />
+          <Route path="dashboard" element={<Admin />} action={updateUserAction} />
           <Route path="courses" element={<CourseLayout />}>
             <Route index element={<Courses />} loader={coursesLoader} />
             <Route

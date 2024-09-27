@@ -2,6 +2,7 @@ import { getAllCourses } from "@/utils/api";
 import { useLoaderData, defer, Await, useLocation } from "react-router-dom";
 import CourseCard from "./CourseCard";
 import { Suspense } from "react";
+import image1 from "@/assets/pexels-fauxels-3184611.jpg"
 
 const Courses = () => {
   const { courses } = useLoaderData()
@@ -19,7 +20,7 @@ const Courses = () => {
             {loadedData => 
               <div className={`max-w-[1240px] grid gap-5 sm:grid-cols-2 md:grid-cols-3 ${admin ? 'lg:grid-cols-3' : 'lg:grid-cols-4'} mt-[90px] px-3`}>
 
-                {loadedData.map(element => <CourseCard key={element._id} admin={admin} {...element} />)}
+                {loadedData.map(element => <CourseCard key={element._id} admin={admin} {...element} image={image1} />)}
                 
               </div>
             }

@@ -2,6 +2,7 @@ import { getCourse } from "@/utils/api";
 import { useLoaderData } from "react-router-dom";
 import { FaCheck } from "react-icons/fa";
 import socialMedia from "@/assets/social-media.jpg"
+import person2 from "@/assets/person2.png"
 
 const CourseDetail = () => {
     const data = useLoaderData();
@@ -42,7 +43,7 @@ const CourseDetail = () => {
                         <a href="/register" className="bg-black w-[150px] sm:w-[200px] rounded-md font-medium my-6 mx-auto md:mx-0 py-2 text-sm sm:text-base sm:py-3 text-deepSkyBlue text-center hover:bg-plum hover:text-black duration-300">Rejoins-nous</a>
                     </div>
 
-                    <img className='md:w-[400px] md:block hidden w-[200px] mx-auto my-4 rounded-xl' src="https://gomycode.com/tn/wp-content/uploads/sites/26/2024/03/DSC02741.png" alt="/" />
+                    <img className='md:w-[600px] md:block hidden w-[200px] mx-auto my-4 rounded-xl' src={person2} alt="/" />
             </div>
             </section>
             

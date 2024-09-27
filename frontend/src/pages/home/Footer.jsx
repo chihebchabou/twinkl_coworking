@@ -12,7 +12,7 @@ const Footer = () => {
     <div className="max-w-[1240px] mx-auto py-16 px-4 grid items-center lg:grid-cols-3 gap-8 text-gray-300">
       <div>
         <h1 className="w-full text-3xl font-bold text-deepSkyBlue uppercase">
-          <img src={logo} alt="" className="w-52" />
+          <img src={logo} alt="" className="w-24 sm:w-32 md:w-40 lg:w-52" />
         </h1>
         {/* <p className="py-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere dolor sit culpa corrupti nobis eius.</p>
             <div className="flex justify-between md:w-[75%] my-6">

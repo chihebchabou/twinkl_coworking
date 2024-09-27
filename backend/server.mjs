@@ -1,6 +1,7 @@
 // Dependencies
 import express from 'express';
 import cors from 'cors';
+import helmet from 'helmet';
 import dotenv from 'dotenv';
 import userRouter from './routes/userRoute.mjs';
 import courseRouter from './routes/courseRoute.mjs';
@@ -26,6 +27,7 @@ const port = process.env.PORT || 5000;
 
 // Middlewares use
 app.use(cors());
+app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());

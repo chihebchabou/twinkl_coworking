@@ -24,10 +24,10 @@ const SidebarComponent = () => {
           <Sidebar.Items>
             <Sidebar.ItemGroup>
               <Sidebar.Item
-                href="/admin"
+                href="/admin/dashboard"
                 onClick={(e) => {
                   e.preventDefault();
-                  navigate("/admin");
+                  navigate("/admin/dashboard");
                 }}
                 icon={HiChartPie}
               >
@@ -103,10 +103,10 @@ const SidebarComponent = () => {
                   <Sidebar.Items>
                     <Sidebar.ItemGroup>
                       <Sidebar.Item
-                        href="/admin"
+                        href="/admin/dashboard"
                         onClick={(e) => {
                           e.preventDefault();
-                          navigate("/admin");
+                          navigate("/admin/dashboard");
                         }}
                         icon={HiChartPie}
                       >

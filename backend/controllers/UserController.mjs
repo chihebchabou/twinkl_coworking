@@ -47,6 +47,7 @@ UserController.signup = async (req, res) => {
 };
 
 UserController.update = async (req, res) => {
+  // throw new ResponseError(400, 'error.message test');
   // Get data from request body
   const {
     firstName,
