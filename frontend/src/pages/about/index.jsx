@@ -1,5 +1,7 @@
 import VideoComponent from '@/components/VideoComponent';
 import { useState } from 'react';
+import about03 from '@/assets/about-03.jpg';
+import about04 from '@/assets/about-04.jpg';
 
 const About = () => {
   const [showVideo, setShowVideo] = useState({ src: '', isOpen: false });
@@ -10,12 +12,12 @@ const About = () => {
           <div className="hidden lg:flex justify-center items-center gap-3">
             <img
               className=" md:w-[250px] translate-y-5 my-4 rounded-md"
-              src="https://cowork.websitelayout.net/img/content/about-03.jpg"
+              src={about03}
               alt="/"
             />
             <img
               className=" md:w-[250px] -translate-y-5 my-4 rounded-md"
-              src="https://cowork.websitelayout.net/img/content/about-04.jpg"
+              src={about04}
               alt="/"
             />
           </div>

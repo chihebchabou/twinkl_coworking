@@ -10,7 +10,7 @@ const CourseDetail = () => {
     const {courseName,description,content=[], skills} = data
     return ( 
         <>
-            <section className="bg-white min-h-screen text-black flex">
+            <section className="bg-white min-h-[75vh] md:min-h-screen text-black flex">
                 <div className="max-w-[1240px]  px-3 mx-auto grid lg:grid-cols-3">
                     <div className="self-center col-span-2 flex flex-col ">
                         <h1 className="text-2xl md:text-3xl lg:text-left text-plum mb-2">{description}</h1>
@@ -33,7 +33,7 @@ const CourseDetail = () => {
                     
                 </div>
             </section>
-             <section className="bg-white min-h-screen flex flex-col items-center  text-black">
+             <section className="bg-white  flex flex-col items-center  text-black">
                 <div className="max-w-[1240px] mx-auto grid md:grid-cols-2 mt-20">
                 
                     <div className="h-[400px] flex flex-col justify-center items-center md:items-start text-center md:text-left">
@@ -43,7 +43,7 @@ const CourseDetail = () => {
                         <a href="/register" className="bg-black w-[150px] sm:w-[200px] rounded-md font-medium my-6 mx-auto md:mx-0 py-2 text-sm sm:text-base sm:py-3 text-deepSkyBlue text-center hover:bg-plum hover:text-black duration-300">Rejoins-nous</a>
                     </div>
 
-                    <img className='md:w-[600px] md:block hidden w-[200px] mx-auto my-4 rounded-xl' src={person2} alt="/" />
+                    <img className='md:w-[600px] md:block hidden w-[400px] mx-auto my-4 rounded-xl' src={person2} alt="/" />
             </div>
             </section>
             
