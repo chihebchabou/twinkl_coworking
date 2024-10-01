@@ -1,9 +1,24 @@
 import { customerRegister, getAllCourses } from "@/utils/api";
+import { useEffect } from "react";
+import { useState } from "react";
 import { Form, useActionData, useLoaderData } from "react-router-dom";
 
 const Register = () => {
   const data = useLoaderData();
   const submittedData = useActionData();
+
+  const [form, setForm] = useState({firstName:"", lastName: "", phone:"", email: "", course:""});
+  const {firstName, lastName, phone, email, course} = form;
+
+  const onChange = e => setForm({...form, [e.target.name]: e.target.value});
+
+  useEffect(()=>{
+    if (submittedData && submittedData.status===201) {
+      setForm({firstName:"", lastName: "", phone:"", email: "", course:""})
+    }
+  }, [submittedData])
+
+
   return (
     <div className="pt-[90px] px-10 md:px-0 w-full min-h-screen flex flex-col justify-center items-center  text-black bg-white">
       <p className="uppercase md:text-4xl sm:text-3xl text-2xl text-plum font-bold my-5">
@@ -37,6 +52,8 @@ const Register = () => {
             type="text"
             name="firstName"
             id="firstName"
+            value={firstName}
+            onChange={onChange}
             placeholder="Enter first name"
           />
         </div>
@@ -51,8 +68,10 @@ const Register = () => {
               "border-red-500 bg-red-100"
             } rounded-md text-black`}
             type="text"
-            name="lastName"
             id="lastName"
+            name="lastName"
+            value={lastName}
+            onChange={onChange}
             placeholder="Enter last name"
           />
         </div>
@@ -69,6 +88,8 @@ const Register = () => {
             type="tel"
             name="phone"
             id="phone"
+            value={phone}
+            onChange={onChange}
             placeholder="Enter phone number"
           />
         </div>
@@ -85,6 +106,8 @@ const Register = () => {
             type="email"
             name="email"
             id="email"
+            value={email}
+            onChange={onChange}
             placeholder="Enter email"
           />
         </div>
@@ -100,6 +123,8 @@ const Register = () => {
             } rounded-md text-black`}
             name="course"
             id="course"
+            value={course}
+            onChange={onChange}
           >
             <option value="">Veuillez sélectionner</option>
             {data &&

@@ -21,7 +21,7 @@ CustomerController.register = async (req, res) => {
     if (error) {
         console.log(error)
         throw new ResponseError(400, error.message);
-    }
+    } 
 
     // Check if customer exists
     const customerExists = await Customer.findOne({ email });

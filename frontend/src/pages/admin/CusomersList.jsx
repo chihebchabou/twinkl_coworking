@@ -6,6 +6,7 @@ import { useLoaderData } from "react-router-dom";
 const CustomersList = () => {
 
     const data = useLoaderData();
+    console.log(data)
 
     return (
         <div className="">
@@ -20,7 +21,7 @@ const CustomersList = () => {
                         <Table.HeadCell>Status</Table.HeadCell>
                     </Table.Head>
                     <Table.Body className="divide-y">
-                        {data && data.map(({_id, firstName, lastName, phone, email, course, status, createdAt}) => (
+                        {data.length > 0 ? data.map(({_id, firstName, lastName, phone, email, course, status, createdAt}) => (
                             <Table.Row key={_id} className="bg-white dark:border-gray-700 dark:bg-gray-800">
                             <Table.Cell> <div className="flex flex-col">
                                 {firstName} {lastName}<span className='text-blue-600'>{email}</span>
@@ -31,7 +32,9 @@ const CustomersList = () => {
                             <Table.Cell>{course}</Table.Cell>
                             <Table.Cell className="text-green-600">{status}</Table.Cell>
                         </Table.Row>
-                        ))}
+                        )) : (<Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+                            <Table.Cell colSpan={5} className="text-yellow-600 text-center text-xl">Pas encore!</Table.Cell>
+                        </Table.Row>)}
 
                     </Table.Body>
 
