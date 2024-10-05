@@ -28,7 +28,7 @@ const CustomersList = () => {
                             </div>
                             </Table.Cell>
                             <Table.Cell>{phone}</Table.Cell>
-                            <Table.Cell>{new Date(createdAt).toLocaleDateString('ar-TN', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: "2-digit"})}</Table.Cell>
+                            <Table.Cell>{new Date(createdAt).toLocaleDateString('fr-FR', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: "2-digit"})}</Table.Cell>
                             <Table.Cell>{course}</Table.Cell>
                             <Table.Cell className="text-green-600">{status}</Table.Cell>
                         </Table.Row>

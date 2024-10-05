@@ -114,13 +114,13 @@ const CourseForm = ({ data, edit, setData, slug, actionData }) => {
         <small className="text-red-600">{errors.find(element => element.includes(`"description"`))}</small>
       </div>
       <Button type="submit">Confirmer</Button>
-      <a
+      {/* <a
         href="#"
         onClick={() => {}}
         className="flex justify-center items-center text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5  mb-2 dark:bg-orange-600 dark:hover:bg-orange-700 focus:outline-none dark:focus:ring-orange-800"
       >
         Annuler
-      </a>
+      </a> */}
     </Form>
   );
 };

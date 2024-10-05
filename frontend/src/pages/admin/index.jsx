@@ -7,12 +7,14 @@ import { Form } from 'react-router-dom';
 import { updateUserProfile } from '@/utils/api';
 import { useActionData } from 'react-router-dom';
 import { useState } from 'react';
-
+let email
 const Admin = () => {
   const data = useOutletContext();
   const [firstName, setFirstName] = useState(data.user.firstName)
   const [lastName, setLastName] = useState(data.user.lastName)
-  const [email, setEmail] = useState(data.user.email)
+
+  email = data.user.email;
+  // const [email, setEmail] = useState(data.user.email)
   const [address, setAddress] = useState(data.user.address)
   const [phone, setPhone] = useState(data.user.phone)
   const [facebook, setFacebook] = useState(data.user.facebook)
@@ -43,6 +45,21 @@ const Admin = () => {
           Les informations de l&lsquo;administrateur
         </h1>
         <Form className="flex max-w-md flex-col gap-4 w-full" method="POST" action='/admin/dashboard'>
+        <div>
+            <div className="mb-2 block">
+              <Label htmlFor="email" value="Email" />
+            </div>
+            <TextInput
+              id="email"
+              type="email"
+              name="email"
+              disabled={true}
+              value={email}
+              // onChange={e => setEmail(e.target.value)}
+              placeholder="ex: 300"
+            />
+            {/* <small className="text-red-600">{errors.find(element => element.includes(`"price"`))}</small> */}
+          </div>
           <div>
             <div className="mb-2 block">
               <Label htmlFor="firstName" value="Prénom" />
@@ -71,20 +88,7 @@ const Admin = () => {
             />
             {/* <small className="text-red-600">{errors.find(element => element.includes(`"duration"`))}</small> */}
           </div>
-          <div>
-            <div className="mb-2 block">
-              <Label htmlFor="email" value="Email" />
-            </div>
-            <TextInput
-              id="email"
-              type="email"
-              name="email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              placeholder="ex: 300"
-            />
-            {/* <small className="text-red-600">{errors.find(element => element.includes(`"price"`))}</small> */}
-          </div>
+          
           <div>
             <div className="mb-2 block">
               <Label htmlFor="address" value="Adresse" />
@@ -161,7 +165,7 @@ const Admin = () => {
 export const action = async ({ request }) => {
   const formData = await request.formData();
   const data = {
-    ...Object.fromEntries(formData),
+    ...Object.fromEntries(formData),email
   };
 
   try {
