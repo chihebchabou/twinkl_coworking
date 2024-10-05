@@ -11,6 +11,6 @@ export const auth = async (req, res, next) => {
         next();
     } catch (error) {
         console.log(error)
-        throw new ResponseError(401, 'Not authorized, token failed');
+        throw new ResponseError(401, 'Accés refusé');
     }
 };

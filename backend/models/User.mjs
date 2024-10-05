@@ -59,7 +59,7 @@ export const authenticate = async (email, password) => {
 
   // If user email and password are valid return the user, otherwise responde with error message
   if (user && user.password === hash(password)) return user;
-  else throw new ResponseError(400, 'Invalid credentials');
+  else throw new ResponseError(400, 'Mauvais login ou mot de passe');
 };
 
 const User = model('User', userSchema);

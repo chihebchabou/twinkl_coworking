@@ -18,9 +18,11 @@ const Login = () => {
         >
           <h1 className="text-center p-5 bg-sky-700 text-white">
             Administration
+            
           </h1>
           <div className="p-5 space-y-3">
             <div className="flex flex-col space-y-2">
+            <small className="text-red-500 text-center">{data && data.message}</small>
               <label htmlFor="email">E-mail</label>
               <input
                 type="email"
@@ -29,7 +31,6 @@ const Login = () => {
                 required
                 className="p-2 outline-none rounded-md border border-black focus:border-sky-500 dark:bg-gray-700"
               />
-              <small className="text-red-500">{data && data.message}</small>
             </div>
 
             <div className="flex flex-col space-y-2">
@@ -41,7 +42,7 @@ const Login = () => {
                 required
                 className="p-2 outline-none rounded-md border border-black focus:border-sky-500 dark:bg-gray-700"
               />
-              <small className="text-red-500">{data && data.message}</small>
+              
             </div>
             <div className="flex justify-end">
               <button className="bg-sky-900 hover:bg-sky-500 block text-white px-4 py-2 rounded-md">
