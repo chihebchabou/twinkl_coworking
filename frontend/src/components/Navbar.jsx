@@ -17,6 +17,7 @@ const Navbar = () => {
         </h1>
         <ul className="hidden md:flex">
             <li className="p-4"><Link to='/courses'>Nos Formations</Link></li>
+            <li className="p-4"><Link to='/spaces'>Nos Espaces</Link></li>
             <li className="p-4"><Link to='/about'>Découvrir TWINKL</Link></li>
 
         </ul>
@@ -29,6 +30,7 @@ const Navbar = () => {
             <h1 className="w-full text-3xl font-bold uppercase text-deepSkyBlue m-4" ><Link to="/"><img src={logo} alt="" className="w-32" /></Link></h1>
             <ul className="uppercase">
                 <li className="p-4 border-b border-gray-600"><Link to='/courses'>Nos Formations</Link></li>
+                <li className="p-4 border-b border-gray-600"><Link to='/spaces'>Nos Espaces</Link></li>
                 <li className="p-4 border-b border-gray-600"><Link to='/about'>Découvrir TWINKL</Link></li>
                 
                 

@@ -32,6 +32,7 @@ import CourseEdit, {
 import AlertState from "./context/alert/AlertState";
 import AlertComponent from "./components/AlertComponent";
 import CustomersList, {loader as CustomersLoader} from "./pages/admin/CusomersList";
+import Spaces from "./pages/spaces";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -47,6 +48,7 @@ const router = createBrowserRouter(
             loader={courseDetailLoader}
           />
         </Route>
+        <Route path="spaces" element={<Spaces />} />
         <Route
           path="register"
           element={<Register />}
