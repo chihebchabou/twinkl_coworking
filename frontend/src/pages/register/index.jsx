@@ -21,8 +21,8 @@ const Register = () => {
 
   return (
     <div className="pt-[90px] px-10 md:px-0 w-full min-h-screen flex flex-col justify-center items-center  text-black bg-white">
-      <p className="uppercase md:text-4xl sm:text-3xl text-2xl text-plum font-bold my-5">
-        Faire des réservations
+      <p className="uppercase text-center md:text-xl text-plum font-bold my-5">
+      Boostez Vos Compétences avec Fun <br /> – Inscrivez-vous Ici !
       </p>
 
       <Form action="/register" method="post" className="w-2/3 lg:w-2/5 mx-auto">

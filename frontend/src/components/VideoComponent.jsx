@@ -4,7 +4,7 @@ const VideoComponent = ({showVideo, setShowVideo}) => {
     <div className="flex justify-center">
       <div className="text-red-900 fixed z-20 h-full w-full  top-0 bg-black opacity-90" onClick={()=> setShowVideo({src:"", isOpen:false})}></div>
       <video
-        className="text-yellow-100 fixed top-28 sm:top-24 md:top-7 z-40 w-[270px] sm:w-[300px] md:w-[340px]"
+        className="text-yellow-100 fixed top-28 sm:top-16 md:top-7 z-40 w-[270px] sm:w-[300px] md:w-[320px]"
         // width="340"
         // height="240"
         controls

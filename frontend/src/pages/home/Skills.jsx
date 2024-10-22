@@ -1,9 +1,9 @@
-import person1 from '@/assets/person1.jpg'
+import home_1 from '@/assets/home_1.png'
 const Skills = () => {
     return ( 
         <div className='w-full bg-white py-16 px-4'>
         <div className="max-w-[1240px] mx-auto grid md:grid-cols-2">
-            <img className='md:w-[300px] w-[200px] mx-auto my-4 rounded-xl' src={person1} alt="/" />
+            <img className='md:w-[400px] w-[300px] mx-auto my-4 rounded-xl' src={home_1} alt="/" />
             <div className="flex flex-col justify-center text-center md:text-left">
                 <p className='uppercase text-plum font-bold'>Booste tes compétences en Tech</p>
                 <h1 className='md:text-4xl sm:text-3xl text-2xl py-2'>Travaillez sur des projets professionnalisants</h1>
