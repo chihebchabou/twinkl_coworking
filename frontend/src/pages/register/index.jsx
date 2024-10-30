@@ -7,6 +7,9 @@ const Register = () => {
   const data = useLoaderData();
   const submittedData = useActionData();
 
+  const errors = submittedData && submittedData.status === 400 && submittedData.message.split(".")
+  console.log(errors)
+
   const [form, setForm] = useState({firstName:"", lastName: "", phone:"", email: "", course:""});
   const {firstName, lastName, phone, email, course} = form;
 
@@ -26,27 +29,14 @@ const Register = () => {
       </p>
 
       <Form action="/register" method="post" className="w-2/3 lg:w-2/5 mx-auto">
-        {submittedData && (
-          <div
-            className={`text-center ${
-              [200, 201, 300, 301].indexOf(submittedData.status) === -1
-                ? "text-red-500 bg-red-100"
-                : "text-green-500 bg-green-100"
-            } w-full rounded-md p-3 mb-4`}
-          >
-            {submittedData.message.split(".").map((m, i) => (
-              <div key={i}>{m}</div>
-            ))}
-          </div>
-        )}
+        
         <div className="mb-5">
           <label htmlFor="firstName" className="block mb-3">
             Prénom
           </label>
           <input
             className={`p-3 flex w-full ${
-              submittedData &&
-              [200, 201, 300, 301].indexOf(submittedData.status) === -1 &&
+              errors && errors.find(error => error.includes("Prénom")) &&
               "border-red-500 bg-red-100"
             } rounded-md text-black`}
             type="text"
@@ -56,6 +46,7 @@ const Register = () => {
             onChange={onChange}
             placeholder="Enter first name"
           />
+          <small className="text-red-500">{errors && errors.find(error => error.includes("Prénom"))}</small>
         </div>
         <div className="mb-5">
           <label htmlFor="lastName" className="block mb-3">
@@ -63,8 +54,7 @@ const Register = () => {
           </label>
           <input
             className={`p-3 flex w-full ${
-              submittedData &&
-              [200, 201, 300, 301].indexOf(submittedData.status) === -1 &&
+              errors && errors.find(error => error.includes("Nom")) &&
               "border-red-500 bg-red-100"
             } rounded-md text-black`}
             type="text"
@@ -74,6 +64,7 @@ const Register = () => {
             onChange={onChange}
             placeholder="Enter last name"
           />
+          <small className="text-red-500">{errors && errors.find(error => error.includes("Nom"))}</small>
         </div>
         <div className="mb-5">
           <label htmlFor="phone" className="block mb-3">
@@ -81,8 +72,7 @@ const Register = () => {
           </label>
           <input
             className={`p-3 flex w-full ${
-              submittedData &&
-              [200, 201, 300, 301].indexOf(submittedData.status) === -1 &&
+              errors && errors.find(error => error.includes("Numéro de téléphone")) &&
               "border-red-500 bg-red-100"
             } rounded-md text-black`}
             type="tel"
@@ -92,6 +82,7 @@ const Register = () => {
             onChange={onChange}
             placeholder="Enter phone number"
           />
+          <small className="text-red-500">{errors && errors.find(error => error.includes("Numéro de téléphone"))}</small>
         </div>
         <div className="mb-5">
           <label htmlFor="email" className="block mb-3">
@@ -99,8 +90,7 @@ const Register = () => {
           </label>
           <input
             className={`p-3 flex w-full ${
-              submittedData &&
-              [200, 201, 300, 301].indexOf(submittedData.status) === -1 &&
+              errors && errors.find(error => error.includes("Email")) &&
               "border-red-500 bg-red-100"
             } rounded-md text-black`}
             type="email"
@@ -110,6 +100,7 @@ const Register = () => {
             onChange={onChange}
             placeholder="Enter email"
           />
+          <small className="text-red-500">{errors && errors.find(error => error.includes("Email"))}</small>
         </div>
         <div className="mb-5">
           <label htmlFor="course" className="block mb-3">
@@ -117,8 +108,7 @@ const Register = () => {
           </label>
           <select
             className={`p-3 flex w-full ${
-              submittedData &&
-              [200, 201, 300, 301].indexOf(submittedData.status) === -1 &&
+              errors && errors.find(error => error.includes("Formation")) &&
               "border-red-500 bg-red-100"
             } rounded-md text-black`}
             name="course"
@@ -134,6 +124,7 @@ const Register = () => {
                 </option>
               ))}
           </select>
+          <small className="text-red-500">{errors && errors.find(error => error.includes("Formation"))}</small>
         </div>
         <button className="bg-deepSkyBlue w-[200px] rounded-md font-medium my-6 mx-auto px-6 py-3 text-black hover:bg-plum duration-300">
           Soumettre

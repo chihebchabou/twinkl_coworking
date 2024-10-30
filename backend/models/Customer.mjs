@@ -16,11 +16,11 @@ const customerSchema = new Schema({
 
 export const validate = (data) => {
   const schema = Joi.object({
-    firstName: Joi.string().required(),
-    lastName: Joi.string().required(),
-    phone: Joi.string().length(8).required(),
-    email: Joi.string().email().required(),
-    course: Joi.string().required(),
+    firstName: Joi.string().required().messages({'string.empty': '"Prénom"  n\'est pas autorisé à être vide'}),
+    lastName: Joi.string().required().messages({'string.empty': '"Nom"  n\'est pas autorisé à être vide'}),
+    phone: Joi.string().length(8).required().messages({'string.empty': '"Numéro de téléphone"  n\'est pas autorisé à être vide', "string.length": '"Numéro de téléphone" doit être de 8 caractères de long'}),
+    email: Joi.string().email().required().messages({'string.empty': '"Email"  n\'est pas autorisé à être vide', 'string.email': '"Email" doit être un email valide'}),
+    course: Joi.string().required().messages({'string.empty': '"Formation"  n\'est pas autorisé à être vide'}),
     // studyField: Joi.string().required(),
     status: Joi.string().default("pending"),
   });
