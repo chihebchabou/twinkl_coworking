@@ -1,5 +1,3 @@
-import { Carousel } from 'flowbite-react';
-
 const Spaces = () => {
   return (
     // <section className="w-full bg-white py-[100px] px-4">
@@ -53,8 +51,6 @@ const Spaces = () => {
     //   </div>
     // </section>
     <>
-      <div className="w-full py-[7rem] px-4 bg-white">
-      </div>
       <div className="w-full py-[7rem] px-4 bg-white">
         <p className="uppercase font-bold text-center text-xl mb-[1rem]">
           Nos tarifs
