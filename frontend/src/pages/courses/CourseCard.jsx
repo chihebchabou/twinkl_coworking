@@ -7,7 +7,7 @@ const CourseCard = (props) => {
     <div className="flex flex-col justify-between border-2 border-gold p-6 rounded-xl bg-white">
       <div className="mb-4">
         <img
-          className="mx-auto rounded-full mb-6"
+          className="mx-auto rounded-full mb-6 w-full h-[200px] sm:h-[150px] object-cover"
           src={image}
           alt=""
         />

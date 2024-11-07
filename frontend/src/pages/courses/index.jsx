@@ -2,7 +2,7 @@ import { getAllCourses } from "@/utils/api";
 import { useLoaderData, defer, Await, useLocation } from "react-router-dom";
 import CourseCard from "./CourseCard";
 import { Suspense } from "react";
-import image1 from "@/assets/pexels-fauxels-3184611.jpg"
+import image1 from "@/assets/baligh2.jpg";
 
 const Courses = () => {
   const { courses } = useLoaderData()
