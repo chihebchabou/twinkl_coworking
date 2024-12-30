@@ -6,11 +6,13 @@ import ResponseError from "../utils/ResponseError.mjs";
 const CustomerController = {}
 
 CustomerController.index = async (req, res) => {
+    throw new Error('Failed!')
     const customers = await Customer.find();
     res.json(customers)
 }
 
 CustomerController.register = async (req, res) => {
+    throw new Error('Failed!')
     // Get data from request body
     const { firstName, lastName, phone, email, course, status } = req.body;
 

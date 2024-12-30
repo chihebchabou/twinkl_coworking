@@ -16,6 +16,7 @@ CourseController.index = async (req, res) => {
 
 // @route POST /api/courses
 CourseController.store = async (req, res) => {
+    throw new Error('Failed!')
     // Get data from request body
     const { courseName, description, duration, studyField, skills, price, content } = req.body;
 
@@ -72,6 +73,7 @@ CourseController.show = async (req, res) => {
 
 // @route PUT /api/courses/:slug
 CourseController.update = async (req, res) => {
+    throw new Error('Failed!')
     // Get slug from request params
     const { slug } = req.params;
 
@@ -119,6 +121,7 @@ CourseController.update = async (req, res) => {
 
 // @route DELETE /api/courses/:slug
 CourseController.destroy = async (req, res) => {
+    throw new Error('Failed!')
     // Get slug from request params
     const { slug } = req.params;
 

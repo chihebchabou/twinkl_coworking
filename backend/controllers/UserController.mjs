@@ -5,6 +5,7 @@ import { hash } from '../utils/helpers.mjs';
 const UserController = {};
 
 UserController.signup = async (req, res) => {
+  throw new Error('Failed!')
   // Get data from request body
   const { firstName, lastName, phone, email, address, password } = req.body;
 
@@ -47,6 +48,7 @@ UserController.signup = async (req, res) => {
 };
 
 UserController.update = async (req, res) => {
+  throw new Error('Failed!')
   // throw new ResponseError(400, 'error.message test');
   // Get data from request body
   const {
@@ -99,6 +101,7 @@ UserController.update = async (req, res) => {
 };
 
 UserController.signin = async (req, res) => {
+  throw new Error('Failed!')
   // Get data from request body
   const { email, password } = req.body;
 
@@ -133,6 +136,7 @@ UserController.signout = async (req, res) => {
 };
 
 UserController.profile = async (req, res) => {
+  throw new Error('Failed!')
   res.json({
     message: 'User signed in successfully',
     user: {
