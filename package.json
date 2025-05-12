@@ -1,5 +1,6 @@
 {
   "name": "twinkl_coworking",
+  "homepage": "https://twinkl-coworking.onrender.com/",
   "version": "1.0.0",
   "description": "Application web pour Twinkl_Coworking",
   "main": "backend/server.mjs",
