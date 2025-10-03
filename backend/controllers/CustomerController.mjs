@@ -29,7 +29,8 @@ CustomerController.register = async (req, res) => {
         throw new ResponseError(400, "Déjà inscrit");
 
     // Add customer to the database
-    const customer = await Customer.create(value);
+    // const customer = await Customer.create(value);
+    const customer = value;
 
     // Return successful response
     res.status(201).json({
