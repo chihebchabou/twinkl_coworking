@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import userRouter from './routes/userRoute.mjs';
 import courseRouter from './routes/courseRoute.mjs';
 import connectDB from './config/db.mjs';
+import job from "./config/cron.mjs";
 import cookieParser from 'cookie-parser';
 import errorMiddleware from './middleware/errorMiddleware.mjs';
 import customerRouter from './routes/customerRoute.mjs';
@@ -18,6 +19,9 @@ dotenv.config();
 
 // Connect to Database
 connectDB();
+
+// Start job
+job.start();
 
 // Init app
 const app = express();
