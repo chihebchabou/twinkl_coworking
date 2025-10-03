@@ -11,7 +11,6 @@ CustomerController.index = async (req, res) => {
 }
 
 CustomerController.register = async (req, res) => {
-    throw new Error('Failed!')
     // Get data from request body
     const { firstName, lastName, phone, email, course, status } = req.body;
 
