@@ -8,6 +8,7 @@ import {
 import logo from '@/assets/logo.png';
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
   return (
     <div className="max-w-[1240px] mx-auto py-16 px-4 grid items-center lg:grid-cols-3 gap-8 text-gray-300">
       <div>
@@ -76,6 +77,14 @@ const Footer = () => {
             {/* <FaGithubSquare size={30} /> */}
             {/* <FaDribbbleSquare size={30} /> */}
           </div>
+         <div>
+           <p className="text-sm">
+            © {currentYear} TWINKL. All Rights Reserved.
+          </p>
+          <p className="text-xs text-muted-foreground mt-1">
+            Designed & Built with ❤️ By Chiheb Chabou
+          </p>
+         </div>
         {/* </div> */}
       </div>
     </div>
