@@ -43,6 +43,10 @@ app.use('/api/courses', courseRouter);
 app.use('/api/social-networks', socialNetworkRouter);
 app.use('/api/study-fields', studyFieldRouter);
 
+app.get("/api", (req, res) => {
+  res.send("API is running...");
+});
+
 
 if (process.env.NODE_ENV === "production") {
     const __dirname = path.resolve();
